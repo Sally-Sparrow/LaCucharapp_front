@@ -10,6 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { MapComponent } from './map/map.component';
 import { BookComponent } from './book/book.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { MapOneComponent } from './map-one/map-one.component';
+import { MapTwoComponent } from './map-two/map-two.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ReserveComponent } from './reserve/reserve.component';
     NavComponent,
     MapComponent,
     BookComponent,
-    ReserveComponent
+    ReserveComponent,
+    MapOneComponent,
+    MapTwoComponent
   ],
   imports: [
     BrowserModule,
