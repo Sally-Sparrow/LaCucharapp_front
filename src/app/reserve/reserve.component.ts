@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reserve',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReserveComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+
+  constructor() {
+    this.form = new FormGroup({
+
+    })
+  }
 
   ngOnInit(): void {
   }

@@ -12,6 +12,7 @@ import { BookComponent } from './book/book.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { MapOneComponent } from './map-one/map-one.component';
 import { MapTwoComponent } from './map-two/map-two.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MapTwoComponent } from './map-two/map-two.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
