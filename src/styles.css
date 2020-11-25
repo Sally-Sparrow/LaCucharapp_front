@@ -1,3 +1,18 @@
+/*! ---------  ICONOS  ----------- */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+
+/*! ---------  FUENTE  ----------- */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400&display=swap');
+/* font-family: 'Mukta', sans-serif; */
+
+/*! ---------  COLOR  ------------ */
+:root{
+    --color-negro: RGB( 21, 16, 11 );
+    --color-blanco: RGB( 240, 228, 220 );
+    --color-verde: RGB( 193, 230, 88 );
+}
+
+/*! ---------  RESET  ------------ */
 /* You can add global styles to this file, and also import other style files */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
