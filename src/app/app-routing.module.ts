@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, children: [
     { path: '', pathMatch: 'full', redirectTo: '/home/map' },
     { path: 'map', component: MapComponent, children: [
-      { path: '', pathMatch: 'full', redirectTo: '/home/map/outside' },
+      { path: '', pathMatch: 'full', redirectTo: '/home/map/inside' },
       { path: 'inside', component: MapOneComponent },
       { path: 'outside', component: MapTwoComponent }
     ]},
