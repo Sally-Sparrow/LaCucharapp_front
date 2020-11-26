@@ -1,72 +1,75 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label> Nombre y apellidos </label>
-        <input type="text" class="form-control" formControlName="nombre">
-    </div>
-    <div class="form-group">
-        <label> Fecha</label>
-        <input type="date" class="form-control" formControlName="fecha">
-    </div>
+        <div class="nombre">
+            <label> Nombre y apellidos </label>
+            <input type="text" class="form-control" formControlName="nombre">
+        </div>
+        <div class="fecha">
+            <label> Fecha</label>
+            <input type="date" class="form-control" formControlName="fecha">
+        </div>
 
-    <div class="form-group">
-        <label> Numero de personas </label>
-        <input type="number" class="form-control" formControlName="personas">
-    </div>
+        <div class="personas">
+            <label> Numero de personas </label>
+            <input type="number" class="form-control" min="1" formControlName="personas">
+        </div>
 
-    <div class="form-group">
-        <select class="form-control" formControlName="turno_comida">
-            <option value="turno_comida1">13:00</option>
-            <option value="turno_comida2">13:30</option>
-            <option value="turno_comida3">14:00</option>
-            <option value="turno_comida4">14:30</option>
-            <option value="turno_comida5">15:00</option>
-            <option value="turno_comida6">15:30</option>
-        </select>
-    </div>
+        <div class="turno-comida">
+            <p>Turno Comida</p>
+            <select class="form-control" formControlName="turno_comida">
+                <option value="turno_comida1">13:00</option>
+                <option value="turno_comida2">13:30</option>
+                <option value="turno_comida3">14:00</option>
+                <option value="turno_comida4">14:30</option>
+                <option value="turno_comida5">15:00</option>
+                <option value="turno_comida6">15:30</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <select class="form-control" formControlName="turno_cena">
-            <option value="turno_cena1">20:30</option>
-            <option value="turno_cena2">21:00</option>
-            <option value="turno_cena3">21:30</option>
-            <option value="turno_cena4">22:00</option>
-            <option value="turno_cena5">22:30</option>
-            <option value="turno_cena6">23:00</option>
-        </select>
-    </div>
+        <div class="turno-cena">
+            <p>Turno Cena</p>
+            <select class="form-control" formControlName="turno_cena">
+                <option value="turno_cena1">20:30</option>
+                <option value="turno_cena2">21:00</option>
+                <option value="turno_cena3">21:30</option>
+                <option value="turno_cena4">22:00</option>
+                <option value="turno_cena5">22:30</option>
+                <option value="turno_cena6">23:00</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <input type="checkbox" value="mesa 1" formControlName="numero_mesa1">
-        Mesa 1
-        <input type="checkbox" value="mesa 2" formControlName="numero_mesa2">
-        Mesa 2
-        <input type="checkbox" value="mesa 3" formControlName="numero_mesa3">
-        Mesa 3
-        <input type="checkbox" value="mesa 4" formControlName="numero_mesa4">
-        Mesa 4
-        <input type="checkbox" value="mesa 5" formControlName="numero_mesa5">
-        Mesa 5
-        <input type="checkbox" value="mesa 6" formControlName="numero_mesa6">
-        Mesa 6
-        <input type="checkbox" value="mesa 7" formControlName="numero_mesa7">
-        Mesa 7
-        <input type="checkbox" value="mesa 8" formControlName="numero_mesa8">
-        Mesa 8
-        <input type="checkbox" value="mesa 9" formControlName="numero_mesa9">
-        Mesa 9
-        <input type="checkbox" value="mesa 10" formControlName="numero_mesa10">
-        Mesa 10
-    </div>
+        <div class="mesa">
+            <input type="checkbox" value="mesa 1" formControlName="numero_mesa1">
+            Mesa 1
+            <input type="checkbox" value="mesa 2" formControlName="numero_mesa2">
+            Mesa 2
+            <input type="checkbox" value="mesa 3" formControlName="numero_mesa3">
+            Mesa 3
+            <input type="checkbox" value="mesa 4" formControlName="numero_mesa4">
+            Mesa 4
+            <input type="checkbox" value="mesa 5" formControlName="numero_mesa5">
+            Mesa 5
+            <input type="checkbox" value="mesa 6" formControlName="numero_mesa6">
+            Mesa 6
+            <input type="checkbox" value="mesa 7" formControlName="numero_mesa7">
+            Mesa 7
+            <input type="checkbox" value="mesa 8" formControlName="numero_mesa8">
+            Mesa 8
+            <input type="checkbox" value="mesa 9" formControlName="numero_mesa9">
+            Mesa 9
+            <input type="checkbox" value="mesa 10" formControlName="numero_mesa10">
+            Mesa 10
+        </div>
 
-    <div class="form-group">
-        <label> Notas </label>
-        <textarea formControlName="nota"></textarea>
-    </div>
+        <div class="nota">
+            <label> Notas </label>
+            <textarea formControlName="nota"></textarea>
+        </div>
 
-    <div class="form-group">
-        <input type="submit" class="form-control" value="Pedro">
-        <input type="submit" class="form-control" value="Javier">
-        <input type="submit" class="form-control" value="Estela">
+        <div class="boton">
+            <input type="submit" class="form-control" value="Pedro">
+            <input type="submit" class="form-control" value="Javier">
+            <input type="submit" class="form-control" value="Estela">
+        </div>
     </div>
-
 </form>

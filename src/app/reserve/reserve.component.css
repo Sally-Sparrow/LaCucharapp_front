@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    display: flex;
+    
+}
+
+.mesa {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+
+
