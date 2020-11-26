@@ -1,0 +1,44 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.nav .menu{
+    width: 30%;
+    display:flex;
+    justify-content: space-between;
+}
+.nav .menu button{
+    background: none;
+    border: none;
+    font-family: 'Righteous', cursive;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+.activated:after{
+    content: "";
+    display: block;
+    height: 10px;
+    width: 110%;
+    margin: 0 auto;
+    margin-top: -14px;
+    margin-left: -5px;
+    background-color: var(--color-contraste);
+}
+.nav .menu button:hover{
+    cursor: pointer;
+}
+.nav .out{
+    margin-left: auto;
+}
+.nav .out button{
+    border: none;
+    background: none;
+    color: var(--color-negro);
+    font-size: 30px;
+}
+.nav .out button:hover{
+    cursor: pointer;
+}

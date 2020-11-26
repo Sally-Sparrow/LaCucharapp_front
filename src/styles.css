@@ -5,11 +5,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400&display=swap');
 /* font-family: 'Mukta', sans-serif; */
 
+/*TODO podría ser una opcion para funte grande*/
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* font-family: 'Righteous', cursive; */
+
 /*! ---------  COLOR  ------------ */
 :root{
     --color-negro: RGB( 26, 26, 26 );
     --color-blanco: RGB( white );
-    --color-contraste: RGB( 67, 154, 108 );
+    --color-contraste: RGB( 204, 255, 51 );
 }
 
 /*! ---------  RESET  ------------ */
