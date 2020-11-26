@@ -14,29 +14,27 @@
             <input type="number" class="form-control" min="1" formControlName="personas">
         </div>
 
-        <div class="turno-comida">
-            <p>Turno Comida</p>
-            <select class="form-control" formControlName="turno_comida">
+        <select class="turnos">
+
+            <optgroup class="form-control" formControlName="turno_comida" label="Turno Comida">
                 <option value="turno_comida1">13:00</option>
                 <option value="turno_comida2">13:30</option>
                 <option value="turno_comida3">14:00</option>
                 <option value="turno_comida4">14:30</option>
                 <option value="turno_comida5">15:00</option>
                 <option value="turno_comida6">15:30</option>
-            </select>
-        </div>
+            </optgroup>
 
-        <div class="turno-cena">
-            <p>Turno Cena</p>
-            <select class="form-control" formControlName="turno_cena">
+            <optgroup class="form-control" formControlName="turno_cena" label="Turno Cena">
                 <option value="turno_cena1">20:30</option>
                 <option value="turno_cena2">21:00</option>
                 <option value="turno_cena3">21:30</option>
                 <option value="turno_cena4">22:00</option>
                 <option value="turno_cena5">22:30</option>
                 <option value="turno_cena6">23:00</option>
-            </select>
-        </div>
+            </optgroup>
+
+        </select>
 
         <div class="mesa">
             <input type="checkbox" value="mesa 1" formControlName="numero_mesa1">
