@@ -11,10 +11,13 @@
 
 /*! ---------  COLOR  ------------ */
 :root{
-    --color-negro: RGB( 26, 26, 26 );
+	--color-negro: RGB( 26, 26, 26 );
+	--color-negro-trans: RGB( 26, 26, 26, 0.3 );
     --color-blanco: RGB( white );
-    --color-contraste: RGB( 204, 255, 51 );
+	--color-contraste: RGB( 204, 255, 51 );
+	--color-contraste-trans: RGB( 204, 255, 51, 0.8 );
 }
+
 
 /*! ---------  RESET  ------------ */
 /* You can add global styles to this file, and also import other style files */
