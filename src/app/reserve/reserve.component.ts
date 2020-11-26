@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reserve',
@@ -13,9 +13,16 @@ export class ReserveComponent implements OnInit {
 
   constructor() {
     this.form = new FormGroup({
-      nombre: new FormControl,
-      fecha: new FormControl,
-      personas: new FormControl,
+      nombre: new FormControl('', [
+        Validators.required
+      ]),
+      fecha: new FormControl('', [
+        Validators.required
+      ]),
+      personas: new FormControl('', [
+        Validators.required
+      ]),
+      servicios: new FormControl,
       turno_comida: new FormControl,
       turno_cena: new FormControl,
       numero_mesa1: new FormControl,
