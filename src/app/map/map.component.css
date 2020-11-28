@@ -1,0 +1,29 @@
+.map{
+    margin-top: 40px;
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.map>button{
+    background-color: var(--color-negro);
+    border: none;
+    border-top-left-radius: 8px ;
+    border-top-right-radius: 8px;
+    color: var(--color-blanco);
+    font-family: 'Mukta', sans-serif;
+    font-size: 20px;
+    padding: 6px 20px;
+}
+.map>button:first-of-type{
+    margin-right: 10px;
+}
+.map .container{
+    background-color: var(--color-negro);
+}
+
+.activated:after{
+    content: "";
+    display: block;
+    height: 10px;
+}

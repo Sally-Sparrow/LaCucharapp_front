@@ -12,7 +12,7 @@
 /*! ---------  COLOR  ------------ */
 :root{
     --color-negro: RGB( 26, 26, 26 );
-    --color-blanco: RGB( white );
+    --color-blanco: RGB( 255, 255, 255 );
     --color-contraste: RGB( 204, 255, 51 );
 }
 

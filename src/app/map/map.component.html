@@ -1,5 +1,8 @@
-<h3>Map</h3>
-<button routerLink="/home/map/inside"> Inside </button>
-<button routerLink="/home/map/outside"> Outside </button>
 
-<router-outlet> </router-outlet>
+<div class="map">
+    <button routerLink="/home/map/inside" routerLinkActive="activated"> Inside </button>
+    <button routerLink="/home/map/outside" routerLinkActive="activated"> Outside </button>
+    <div class="container">
+        <router-outlet> </router-outlet>
+    </div>   
+</div>
