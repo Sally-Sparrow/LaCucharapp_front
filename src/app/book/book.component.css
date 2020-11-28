@@ -1,33 +1,70 @@
-table {
-border-collapse: collapse;
-width: 90%;
-margin: 0 auto;
-margin-top: 30px;
+.book{
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
 }
 
-td {
-    border: 1px solid #999;
-    text-align: left;
-    padding: 10px;
-  }
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 40px;
+  font-family: 'Mukta', sans-serif;
+}
 
+/* ---- cabecera ---- */
+table thead{
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+  text-align: center;
+}
+table thead th{
+  padding: 15px;
+  border-right: 1px solid #999;
+}
+table thead th:last-of-type{
+  border: none;
+}
 
-  th {
-    border: 1px solid #999;
-    text-align: center;
-    padding: 15px;
-    font-family: 'Righteous', cursive;
-    background-color: var(--color-negro);
-    color: white;
-  }
+/* ---- body ---- */
+table tbody{
+  letter-spacing: 1px;
+}
+/*? hora */
+thead th:nth-child(1) {
+  width: 15%;
+}
+/*? nombre */
+thead th:nth-child(2) {
+  width: 40%;
+}
+/*? mesa */
+thead th:nth-child(3) {
+  width: 10%;
+}
+/*? telefono */
+thead th:nth-child(4) {
+  width: 25%;
+}
+/*? pax */
+thead th:nth-child(5){
+  width: 10%;
+}
+table td{
+  text-align: left;
+  padding: 20px;
+}
+table td:first-child{
+  padding-left: 40px;
+  color: var(--color-contraste);
+}
 
-  table tr:nth-child(even) {
-    background-color: var(--color-negro-trans);
-  }
+/* ----- cebra ---- */
 
-  table tr:nth-child(odd) {
-    background-color:var(--color-contraste-trans);
-    color: black;
-  }
+table tr:nth-child(even) {
+  background-color: var(--color-negro);
+}
+table tr:nth-child(odd) {
+  background-color: rgb(40, 40, 40);
+}
 
  
