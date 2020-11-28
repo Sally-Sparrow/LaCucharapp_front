@@ -13,7 +13,7 @@
 :root{
 	--color-negro: RGB( 26, 26, 26 );
 	--color-negro-trans: RGB( 26, 26, 26, 0.3 );
-    --color-blanco: RGB( white );
+    --color-blanco: RGB( 255, 255, 255 );
 	--color-contraste: RGB( 204, 255, 51 );
 	--color-contraste-trans: RGB( 204, 255, 51, 0.8 );
 }
