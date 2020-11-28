@@ -1,0 +1,91 @@
+
+.mapone{
+    margin: 10px 10px;
+    background-color: rgb(252, 223, 192);
+    border: 1px solid rgb(252, 223, 192);
+    /* height: 70vh; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.mapone .mesa {
+    height: 100px;
+    width: 100px;
+    background-color: var(--color-negro);
+    border-radius: 50%;
+    position: relative;
+    margin: 60px;
+    transform: rotate(45deg);
+}
+.mapone .mesa .silla1{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: -28px;
+    left: 34px;
+}
+.mapone .mesa .silla1:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: -10px;
+}
+.mapone .mesa .silla2{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 102px;
+    left: 34px;
+}
+.mapone .mesa .silla2:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+.mapone .mesa .silla3{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 36px;
+    left: -30px;
+    transform: rotate(90deg);
+}
+.mapone .mesa .silla3:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+.mapone .mesa .silla4{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 36px;
+    right: -30px;
+    transform: rotate(-90deg);
+}
+.mapone .mesa .silla4:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+
