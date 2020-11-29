@@ -16,6 +16,9 @@ export class ReserveComponent implements OnInit {
       nombre: new FormControl('', [
         Validators.required
       ]),
+      apellidos: new FormControl(''),
+      telefono: new FormControl(''),
+      email: new FormControl(''),
       fecha: new FormControl('', [
         Validators.required
       ]),
