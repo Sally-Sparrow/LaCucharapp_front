@@ -1,26 +1,69 @@
-form {
+.form{
+    background-color: var(--color-negro);
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border-radius: 16px;
+    font-family: 'Mukta', sans-serif;
+}
+form{
+    padding: 40px;
     display: flex;
     flex-direction: column;
+}
+form p{
+    color: grey;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+form input{
+    border: none;
+    font-size: 16px;
+    border-radius: 16px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+form .datos-cliente{
+    display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-div{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-control {
-    display: flex;
-    
-}
-
-.mesa {
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    width: 60%;
+    margin-bottom: 40px;
 }
+/* form .datos-cliente:after{
+    content: "";
+    display: block;
+    width: 34%;
+    margin-left: 0px;
+    border-bottom: 1px solid grey;
+} */
+form .datos-reserva{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.mesas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+    padding-top: 20px;
+}
+form .nota-firma{
+    display: flex;
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+    margin-top: 40px;
+}
+form .nota-firma .nota{
+    width: 40%;
+}
+form .nota-firma .firma{
+    width: 40%;
+}
+
+
 
 
 
