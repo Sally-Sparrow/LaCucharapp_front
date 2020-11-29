@@ -22,6 +22,7 @@ form input{
     border-radius: 16px;
     padding-left: 10px;
     margin-bottom: 20px;
+    height: 25px;
 }
 form input:focus{
     outline: none;
@@ -72,6 +73,7 @@ form .datos-reserva select{
     border-radius: 16px;
     padding-left: 10px;
     margin-bottom: 20px;
+    height: 25px;
 }
 form .datos-reserva #pax{
     width: 30%;
@@ -90,8 +92,33 @@ form .datos-reserva:after{
     justify-content: space-around;
     color: var(--color-blanco);
     border: 1px solid var(--color-blanco);
-    padding-top: 20px;
+    padding: 20px;
+} 
+
+/* CHECKBOX */
+
+[type="checkbox"] {
+    display: none;
 }
+
+label:before {
+    content: ' ';
+    border: solid 1px var(--color-blanco);
+    width: 0.8em;
+    height: 0.8em;
+    position: absolute;
+    margin-right: 20px;
+}
+
+[type="checkbox"]:checked + label:before {
+    color: var(--color-contraste);
+    border-color: var(--color-contraste) ;
+    content: '\f00c';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+}
+
+
 form .nota-firma{
     display: flex;
     /* justify-content: space-between; */
