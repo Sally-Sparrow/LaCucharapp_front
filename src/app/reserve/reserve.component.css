@@ -100,14 +100,16 @@ form .datos-reserva:after{
 [type="checkbox"] {
     display: none;
 }
-
+.mesas div span{
+    margin-left: 16px;
+}
 label:before {
     content: ' ';
     border: solid 1px var(--color-blanco);
     width: 0.8em;
     height: 0.8em;
     position: absolute;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 [type="checkbox"]:checked + label:before {
