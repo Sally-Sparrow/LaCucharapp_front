@@ -32,6 +32,7 @@
         </div>
 
         <div class="mesas">
+            <!--TODO iterables, dependiendo del nºmesas  -->
             <div>
                 <input type="checkbox" value="mesa-1" formControlName="numero_mesa1" id="mesa1">
                 <label for="mesa1"></label> 
@@ -91,9 +92,40 @@
             </div>
 
             <div class="firma">
-                <input type="submit" class="form-control" value="Pedro">
-                <input type="submit" class="form-control" value="Javier">
-                <input type="submit" class="form-control" value="Estela">
+                <!--TODO iterable, dependiendo del nº empleados -->
+                <p>Firmar y reservar</p>
+                <div class="users">
+                    <div>
+                        <input type="submit" class="form-control" value="Pedro">
+                        <div>
+                            <!-- ! EL PUTO ICON ES UN AFTER >.< -->
+                            <!-- <i class="fas fa-user"></i> -->
+                            <div class="myicon">
+                                <div class="head"></div>
+                            </div>
+                            <!-- TODO nombres vienen de config -->
+                            <p>Pedro</p>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" class="form-control" value="Javier">
+                        <div>
+                            <div class="myicon">
+                                <div class="head"></div>
+                            </div>
+                            <p>Javier</p>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" class="form-control" value="Estela">
+                        <div>
+                            <div class="myicon">
+                                <div class="head"></div>
+                            </div>
+                            <p>Estela</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
