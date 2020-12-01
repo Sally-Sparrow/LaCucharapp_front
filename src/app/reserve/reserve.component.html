@@ -10,24 +10,27 @@
         <p>Datos de la reserva</p>
         <div class="datos-reserva">
             <input id="fecha" type="date" formControlName="fecha" placeholder="Fecha">
-            <select formControlName="servicios">
-                <optgroup class="form-control" label="Turno Comida">
-                    <option value="turno_comida1">13:00</option>
-                    <option value="turno_comida2">13:30</option>
-                    <option value="turno_comida3">14:00</option>
-                    <option value="turno_comida4">14:30</option>
-                    <option value="turno_comida5">15:00</option>
-                    <option value="turno_comida6">15:30</option>
-                </optgroup>
-                <optgroup class="form-control" label="Turno Cena">
-                    <option value="turno_cena1">20:30</option>
-                    <option value="turno_cena2">21:00</option>
-                    <option value="turno_cena3">21:30</option>
-                    <option value="turno_cena4">22:00</option>
-                    <option value="turno_cena5">22:30</option>
-                    <option value="turno_cena6">23:00</option>
-                </optgroup>
-            </select>
+            <div class="select">
+                <select formControlName="servicios">
+                    <optgroup class="form-control" label="Turno Comida">
+                        <option value="turno_comida1">13:00</option>
+                        <option value="turno_comida2">13:30</option>
+                        <option value="turno_comida3">14:00</option>
+                        <option value="turno_comida4">14:30</option>
+                        <option value="turno_comida5">15:00</option>
+                        <option value="turno_comida6">15:30</option>
+                    </optgroup>
+                    <optgroup class="form-control" label="Turno Cena">
+                        <option value="turno_cena1">20:30</option>
+                        <option value="turno_cena2">21:00</option>
+                        <option value="turno_cena3">21:30</option>
+                        <option value="turno_cena4">22:00</option>
+                        <option value="turno_cena5">22:30</option>
+                        <option value="turno_cena6">23:00</option>
+                    </optgroup>
+                </select>
+                <span class="flechadesplegable"></span>
+            </div>
             <input id="pax" type="number" min="1" formControlName="personas" placeholder="pax">
         </div>
 

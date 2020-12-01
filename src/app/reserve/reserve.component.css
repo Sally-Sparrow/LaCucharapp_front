@@ -1,12 +1,14 @@
 .form{
     background-color: var(--color-negro);
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     margin-top: 40px;
-    border-radius: 16px;
+    /* border-radius: 16px; */
     font-family: 'Mukta', sans-serif;
 }
 form{
+    margin: 0 auto;
+    width: 70%;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -65,14 +67,47 @@ form .datos-reserva{
 form .datos-reserva #fecha{
     width: 30%;
 }
-form .datos-reserva select{
+form .datos-reserva .select{
     width: 30%;
-    border: none;
+    margin-bottom: 20px;
+    height: 25px;
+    position: relative;
+    appearance: none;
+}
+form .datos-reserva .select select{
+    width: 100%;
+    height: 100%;
     font-size: 16px;
     border-radius: 16px;
     padding-left: 10px;
-    margin-bottom: 20px;
-    height: 25px;
+    appearance: none;
+    border: none;
+}
+form .datos-reserva .select select:focus{
+    outline: none;
+    border: 2px solid var(--color-contraste); 
+}
+/* flecha desplegable select */
+.flechadesplegable{
+    position: absolute;
+    display: block;
+    background-color: var(--color-contraste);
+    height: 100%;
+    width: 30px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+.flechadesplegable::before{
+    position: absolute;
+    content: "";
+    border-top: 8px solid var(--color-negro);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    right: 7px;
+    top: 10px;
 }
 form .datos-reserva #pax{
     width: 30%;
@@ -83,13 +118,12 @@ form .datos-reserva #pax{
     justify-content: space-around;
     color: var(--color-blanco);
     border: 1px solid var(--color-blanco);
-    /* padding: 20px; */
 }
 .mesas div{
     padding: 20px;
 } 
 
-/* CHECKBOX */
+/* CHECKBOX MESAS */
 
 [type="checkbox"] {
     display: none;
@@ -130,6 +164,8 @@ form .nota-firma .nota textarea{
     border-radius: 8px;
     font-size: 16px;
 }
+
+/* ICONOS FIRMA */
 form .nota-firma .firma{
     width: 50%;
 }
@@ -198,6 +234,51 @@ form .nota-firma .firma .users div div p{
     text-align: center;
     margin-top: 5px;
     color: var(--color-blanco);
+}
+
+/* ---- MEDIA QUERYS ---- */
+
+@media( max-width: 800px ){
+
+    /* datos de cliente */
+    form .datos-cliente{
+        flex-direction: column;
+    } 
+    form .datos-cliente #nombre, #apellidos{
+        width: 100%;
+    } 
+    form .datos-cliente #telefono{
+        width: 100%;
+    }
+    form .datos-cliente #email{
+        width: 100%;
+    }
+
+    /* datos de reserva */
+    form .datos-reserva{
+        flex-direction: column;
+    }
+    form .datos-reserva #fecha{
+        width: 100%;
+    }
+    form .datos-reserva .select{
+        width: 100%;
+    }
+    form .datos-reserva #pax{
+        width: 100%;
+    }
+
+    /* notas y firma */
+    form .nota-firma{
+        flex-direction: column;
+    }
+    form .nota-firma .nota{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    form .nota-firma .firma{
+        width: 100%;
+    }
 }
 
 
