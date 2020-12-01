@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .book{
   background-color: var(--color-negro);
   color: var(--color-blanco);
