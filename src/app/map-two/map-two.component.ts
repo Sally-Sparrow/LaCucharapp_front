@@ -12,4 +12,16 @@ export class MapTwoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  pintaArbolito( base, longitud, ramas, arco, angulo, n ){
+    if( n <= 0 ) { return }
+
+    for(let i = 0; i < ramas; i++){
+      const fin =  {
+        x: base.x + Math.cos(0) * longitud,
+        y: base.y + Math.cos(0) * longitud,
+      }
+    }
+    //pintar un after 
+  }
+
 }

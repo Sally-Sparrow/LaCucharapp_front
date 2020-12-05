@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Reserva } from '../interfaces/reserva.interface';
+import { ReservaService } from '../services/reserva.service';
 
 @Component({
   selector: 'app-book',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
 
-  constructor() { }
+
+  reservas: Reserva[];
+
+  constructor( private reservaService: ReservaService ) { 
+    this.reservas = [];
+  }
 
   ngOnInit(): void {
+    this.reservaService.getReserva()
+      .then( response => {
+        console.log(response);
+        
+      })
+      .catch( error => console.log(error) );
   }
 
 }
