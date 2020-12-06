@@ -1,7 +1,7 @@
 <div class="nav">
     <div class="menu">
         <button routerLink="/home/map/inside" routerLinkActive="activated"> map </button>
-        <button routerLink="/home/book" routerLinkActive="activated"> book </button>
+        <button [routerLink]="['/home/book', fechaDeHoy]" routerLinkActive="activated"> book </button>
         <button routerLink="/home/reservation" routerLinkActive="activated"> reserve </button>
     </div>
     <div class="out">

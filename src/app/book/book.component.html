@@ -8,54 +8,12 @@
             <th>Pax</th>
         </thead>
         <tbody>
-            <tr>
-                <td>15:00</td>
-                <td>Juan Antonio Fernandez Romero</td>
-                <td>4</td>
-                <td>6679456714</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>21:00</td>
-                <td>Josefa</td>
-                <td>3</td>
-                <td>667953714</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>13:00</td>
-                <td>Maria</td>
-                <td>4</td>
-                <td>685438585</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>13:00</td>
-                <td>Maria</td>
-                <td>4</td>
-                <td>685438585</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>15:00</td>
-                <td>Pepe</td>
-                <td>4</td>
-                <td>6679456714</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>15:00</td>
-                <td>Pepe</td>
-                <td>4</td>
-                <td>6679456714</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>15:00</td>
-                <td>Pepe</td>
-                <td>4</td>
-                <td>6679456714</td>
-                <td>6</td>
+            <tr *ngFor="let reserva of reservasDelDia">
+                <td>{{reserva.hora}}}</td>
+                <td>{{reserva.nombre}}</td>
+                <td>{{reserva.mesas}}</td> <!--habria uqe reccorer array mesas-->
+                <td>{{reserva.telefono}}</td>
+                <td>{{reserva.pax}}</td>
             </tr>
         </tbody>
     </table>

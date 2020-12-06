@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reserva } from '../interfaces/reserva.interface';
 
@@ -17,7 +17,7 @@ export class ReservaService {
 
   }
 
-  getReserva(): Promise<Reserva[]>{
-      return this.httpClient.get<Reserva[]>(this.baseUrl).toPromise();
+  getReservaByFecha( pFecha ): Promise<Reserva[]>{
+      return this.httpClient.get<Reserva[]>(`${this.baseUrl}/${pFecha}`).toPromise();
   }
 }

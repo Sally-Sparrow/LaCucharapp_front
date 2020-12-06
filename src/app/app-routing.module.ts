@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: 'inside', component: MapOneComponent },
       { path: 'outside', component: MapTwoComponent }
     ]},
-    { path: 'book', component: BookComponent },
+    { path: 'book/:fecha', component: BookComponent },
     { path: 'reservation', component: ReserveComponent }
   ]}
 ];
