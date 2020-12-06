@@ -4,14 +4,40 @@
 .book{
   background-color: var(--color-negro);
   color: var(--color-blanco);
+  font-family: 'Mukta', sans-serif;
 }
 
+/* ---- nav book ---- */
+.book .navBook{
+  display: flex;
+  margin-top: 40px;
+  background-color: rgb(40, 40, 40);
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.book .navBook button{
+  background: none;
+  border: none;
+  padding-right: 20px;
+}
+.book .navBook button:hover{
+  cursor: pointer;
+}
+.book .navBook button:last-of-type{
+  transform: rotate(180deg);
+  padding-left: 20px;
+}
+.book .navBook button i{
+  font-size: 40px;
+  color: var(--color-contraste);
+}
+/* ---- Tabla reservas ---- */
 table {
   table-layout: fixed;
   border-collapse: collapse;
   width: 100%;
-  margin-top: 40px;
-  font-family: 'Mukta', sans-serif;
 }
 
 /* ---- cabecera ---- */

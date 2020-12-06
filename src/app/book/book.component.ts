@@ -12,6 +12,7 @@ export class BookComponent implements OnInit {
 
 
   reservasDelDia: Reserva[];
+  fechaDelDia: string;
 
   constructor( 
     private reservaService: ReservaService,
@@ -23,8 +24,8 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( async params =>{
-      const fechaDelDia = params.fecha;
-      this.reservasDelDia = await this.reservaService.getReservaByFecha( fechaDelDia );
+      this.fechaDelDia = params.fecha;
+      this.reservasDelDia = await this.reservaService.getReservaByFecha( this.fechaDelDia );
       console.log( this.reservasDelDia );
     });
   }

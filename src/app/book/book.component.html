@@ -1,4 +1,9 @@
 <div class="book">
+    <div class="navBook"> 
+        <button class="izq"><i class="fas fa-caret-left"></i></button>
+        {{fechaDelDia | date: 'dd . MMMM . yyyy'}} 
+        <button class="der"><i class="fas fa-caret-left"></i></button>
+    </div>
     <table>
         <thead>
             <th>Hora</th>
@@ -9,9 +14,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let reserva of reservasDelDia">
-                <td>{{reserva.hora}}}</td>
-                <td>{{reserva.nombre}}</td>
-                <td>{{reserva.mesas}}</td> <!--habria uqe reccorer array mesas-->
+                <td>{{reserva.hora_inicio | date: 'HH:mm'}}</td>
+                <td>{{reserva.nombre+' '}}{{reserva.apellidos}}</td>
+                <td> 
+                    <span *ngFor="let mesa of reserva.mesas"> {{mesa.numero}}, </span>
+                </td>
                 <td>{{reserva.telefono}}</td>
                 <td>{{reserva.pax}}</td>
             </tr>
