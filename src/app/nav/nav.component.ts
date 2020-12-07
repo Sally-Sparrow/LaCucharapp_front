@@ -7,39 +7,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  fechaDeHoy: string;
+  fechaConsulta: string;
   mostrar: boolean;
+  desplazamientoDias: number;
 
-  constructor() { }
+  constructor() { 
+    this.desplazamientoDias = 0;
+  }
 
 
 
   ngOnInit(): void {
-      this.fechaDeHoy = this.getFechaActual();
-      //console.log(this.fechaDeHoy);
+      this.fechaConsulta = this.getFecha();
   }
 
-
-
+  //* Muestra el navegador para paginacion de reservas por fecha*/
   mostrarBookNav($event){
     if($event.target.value === 'home'){
       this.mostrar = true;
+      this.desplazamientoDias = 0;
     }else{ this.mostrar = false; }
-    console.log($event.target.value);
+  }
+
+  //*Calcula los dias desplazados respecto a la fecha actual de consulta de reservas */
+  getDesplazamientoConsulta($event){
+    if( $event.target.value === 'masDia' ){
+      this.desplazamientoDias ++;
+      console.log(this.desplazamientoDias);
+      
+    }else if( $event.target.value === 'menosDia' ){
+      this.desplazamientoDias --;
+      console.log(this.desplazamientoDias);
+      
+    }else{}
+    this.fechaConsulta = this.getFecha();
   }
 
 
-
   //* Devuelve la fecha del día en string y formato yyyy-mm-dd
-  getFechaActual() {
+  getFecha() {
     //devuelve string
-    var returnFechaHoy = "";
+    let returnFechaHoy = "";
     //pesca la fecha de hoy
-    var hoy = new Date();
+    let hoy = new Date();
+    //desplaza la fecha actual a la fecha que se quiere consultar
+    hoy.setDate( hoy.getDate() + this.desplazamientoDias );
     //separa
-    var dd = hoy.getDate();
-    var mm = hoy.getMonth() + 1; //por lo visto enero es 0 ¬.¬
-    var yyyy = hoy.getFullYear();
+    let dd = hoy.getDate();
+    let mm = hoy.getMonth() + 1; //por lo visto enero es 0 ¬.¬
+    let yyyy = hoy.getFullYear();
     
     returnFechaHoy += yyyy;
     //pone los ceritos de la izq y los guiones
@@ -53,5 +69,6 @@ export class NavComponent implements OnInit {
     //taDah! :)
     return returnFechaHoy;
     }
+
 
 }

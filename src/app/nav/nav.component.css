@@ -71,4 +71,5 @@
   .bookNav button i{
     font-size: 40px;
     color: var(--color-contraste);
+    pointer-events: none;
   }

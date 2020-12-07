@@ -3,7 +3,7 @@
         <!-- BOTÓN MAP -->
         <button routerLink="/home/map/inside" routerLinkActive="activated" (click)="mostrarBookNav($event)"> map </button>
         <!-- BOTÓN BOOK -->
-        <button [routerLink]="['/home/book', fechaDeHoy]" routerLinkActive="activated" (click)="mostrarBookNav($event)" value="home"> book </button>
+        <button [routerLink]="['/home/book', fechaConsulta]" routerLinkActive="activated" (click)="mostrarBookNav($event)" value="home"> book </button>
         <!-- BOTÓN RESERVAR -->
         <button routerLink="/home/reservation" routerLinkActive="activated" (click)="mostrarBookNav($event)"> reserve </button>
     </div>
@@ -15,9 +15,9 @@
 
 <!-- nav. páginas de book si está activa la ruta BOOK-->
 <div *ngIf="mostrar" class="bookNav">
-    <button class="izq"  ><i class="fas fa-caret-left"></i></button>
-    {{ fechaDeHoy | date: 'dd . MMMM . yyyy' }}
-    <button class="der"><i class="fas fa-caret-left"></i></button>
+    <button value="menosDia" [routerLink]="['/home/book', fechaConsulta]" (click)="getDesplazamientoConsulta($event)" ><i class="fas fa-caret-left"></i></button>
+    {{ fechaConsulta | date: 'dd . MMMM . yyyy' }}
+    <button value="masDia" [routerLink]="['/home/book', fechaConsulta]" (click)="getDesplazamientoConsulta($event)" > <i class="fas fa-caret-left"></i> </button>
 </div>
 <!-- fin nav. book -->
 
