@@ -1,12 +1,24 @@
 <div class="nav">
     <div class="menu">
-        <button routerLink="/home/map/inside" routerLinkActive="activated"> map </button>
-        <button [routerLink]="['/home/book', fechaDeHoy]" routerLinkActive="activated"> book </button>
-        <button routerLink="/home/reservation" routerLinkActive="activated"> reserve </button>
+        <!-- BOTÓN MAP -->
+        <button routerLink="/home/map/inside" routerLinkActive="activated" (click)="mostrarBookNav($event)"> map </button>
+        <!-- BOTÓN BOOK -->
+        <button [routerLink]="['/home/book', fechaDeHoy]" routerLinkActive="activated" (click)="mostrarBookNav($event)" value="home"> book </button>
+        <!-- BOTÓN RESERVAR -->
+        <button routerLink="/home/reservation" routerLinkActive="activated" (click)="mostrarBookNav($event)"> reserve </button>
     </div>
+    <!-- BOTÓN SIGN OUT -->
     <div class="out">
-        <button routerLink="/login"> <i class="fas fa-sign-out-alt"></i> </button>
+        <button routerLink="/login" (click)="mostrarBookNav($event)"> <i class="fas fa-sign-out-alt"></i> </button>
     </div>
 </div>
+
+<!-- nav. páginas de book si está activa la ruta BOOK-->
+<div *ngIf="mostrar" class="bookNav">
+    <button class="izq"  ><i class="fas fa-caret-left"></i></button>
+    {{ fechaDeHoy | date: 'dd . MMMM . yyyy' }}
+    <button class="der"><i class="fas fa-caret-left"></i></button>
+</div>
+<!-- fin nav. book -->
 
 

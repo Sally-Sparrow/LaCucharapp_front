@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   fechaDeHoy: string;
+  mostrar: boolean;
 
   constructor() { }
 
@@ -17,6 +18,16 @@ export class NavComponent implements OnInit {
       this.fechaDeHoy = this.getFechaActual();
       //console.log(this.fechaDeHoy);
   }
+
+
+
+  mostrarBookNav($event){
+    if($event.target.value === 'home'){
+      this.mostrar = true;
+    }else{ this.mostrar = false; }
+    console.log($event.target.value);
+  }
+
 
 
   //* Devuelve la fecha del día en string y formato yyyy-mm-dd
@@ -31,7 +42,7 @@ export class NavComponent implements OnInit {
     var yyyy = hoy.getFullYear();
     
     returnFechaHoy += yyyy;
-
+    //pone los ceritos de la izq y los guiones
     if (mm < 10) {
       returnFechaHoy += `-0${mm}`;
       } else { returnFechaHoy += `-${mm}-` }
@@ -39,7 +50,7 @@ export class NavComponent implements OnInit {
     if (dd < 10) {
     returnFechaHoy += `0${dd}`;
     } else { returnFechaHoy += `${dd}`; }
-    
+    //taDah! :)
     return returnFechaHoy;
     }
 

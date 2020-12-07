@@ -13,6 +13,8 @@ export class BookComponent implements OnInit {
 
   reservasDelDia: Reserva[];
   fechaDelDia: string;
+  fechaAnterior: string;
+  fechaPosterior: string;
 
   constructor( 
     private reservaService: ReservaService,
@@ -22,6 +24,7 @@ export class BookComponent implements OnInit {
     this.reservasDelDia = [];
   }
 
+  // RECUPERA las reservas del día
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( async params =>{
       this.fechaDelDia = params.fecha;
@@ -30,5 +33,5 @@ export class BookComponent implements OnInit {
     });
   }
 
-
+  
 }

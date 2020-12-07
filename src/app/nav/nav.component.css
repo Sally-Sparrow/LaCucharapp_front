@@ -42,3 +42,33 @@
 .nav .out button:hover{
     cursor: pointer;
 }
+
+
+/* ---- nav book ---- */
+.bookNav{
+    display: flex;
+    margin-top: 40px;
+    background-color: rgb(40, 40, 40);
+    font-size: 20px;
+    color: var(--color-blanco);
+    font-family: 'Mukta', sans-serif;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .bookNav button{
+    background: none;
+    border: none;
+    padding-right: 20px;
+  }
+  .bookNav button:hover{
+    cursor: pointer;
+  }
+  .bookNav button:last-of-type{
+    transform: rotate(180deg);
+    padding-left: 20px;
+  }
+  .bookNav button i{
+    font-size: 40px;
+    color: var(--color-contraste);
+  }
