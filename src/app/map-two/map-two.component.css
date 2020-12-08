@@ -17,6 +17,13 @@
     margin: 60px;
     transform: rotate(45deg);
 }
+.maptwo .mesa #num{
+    font-size: 20px;
+    color: var(--color-black);
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top: 0;
+}
 .maptwo .mesa .silla1{
     position: absolute;
     height: 26px;

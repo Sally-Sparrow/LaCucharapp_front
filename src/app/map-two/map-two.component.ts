@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mesas } from '../interfaces/mesas.interface';
+import { MapService } from '../services/map.service';
 
 @Component({
   selector: 'app-map-two',
@@ -7,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapTwoComponent implements OnInit {
 
-  constructor() { }
+  mesasOutside: Mesas[]
+
+  constructor(
+    private mapService: MapService
+  ) { 
+
+    this.mesasOutside = [];
+  }
 
   ngOnInit(): void {
+    this.mapService.getMesasByEspacio( 'outside' )
+      .then( response => {
+        console.log(response);
+         this.mesasOutside = response;
+         return this.mesasOutside;
+      })
+      .catch( error => console.log(error));
   }
+
+
+
+
+
 
   pintaArbolito( base, longitud, ramas, arco, angulo, n ){
     if( n <= 0 ) { return }
