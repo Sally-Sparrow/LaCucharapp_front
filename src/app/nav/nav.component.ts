@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
   mostrar: boolean;
   desplazamientoDias: number;
 
-  constructor() { 
+  constructor( private router: Router) { 
     this.desplazamientoDias = 0;
   }
 
@@ -26,6 +27,7 @@ export class NavComponent implements OnInit {
     if($event.target.value === 'home'){
       this.mostrar = true;
       this.desplazamientoDias = 0;
+      this.fechaConsulta = this.getFecha();    
     }else{ this.mostrar = false; }
   }
 
@@ -33,14 +35,15 @@ export class NavComponent implements OnInit {
   getDesplazamientoConsulta($event){
     if( $event.target.value === 'masDia' ){
       this.desplazamientoDias ++;
-      console.log(this.desplazamientoDias);
-      
+     
     }else if( $event.target.value === 'menosDia' ){
       this.desplazamientoDias --;
       console.log(this.desplazamientoDias);
       
     }else{}
     this.fechaConsulta = this.getFecha();
+    //habria que forzar aqui la recarga de la url, o navegar aqui en lugar de con un routerlink??
+    //!! hay un descuadre entre el click en el boton y la recarga de la url, cambia la variable fecha que se muestra, y al siguiente, envia url
   }
 
 
@@ -50,7 +53,7 @@ export class NavComponent implements OnInit {
     let returnFechaHoy = "";
     //pesca la fecha de hoy
     let hoy = new Date();
-    //desplaza la fecha actual a la fecha que se quiere consultar
+    //desplaza la fecha actual a la fecha que se quiere consultar,sumando/restando dias
     hoy.setDate( hoy.getDate() + this.desplazamientoDias );
     //separa
     let dd = hoy.getDate();

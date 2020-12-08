@@ -61,7 +61,7 @@
     border: none;
     padding-right: 20px;
   }
-  .bookNav button:hover{
+  .bookNav buttton:hover{
     cursor: pointer;
   }
   .bookNav button:last-of-type{

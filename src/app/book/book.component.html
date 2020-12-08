@@ -13,7 +13,12 @@
                 <td>{{reserva.hora_inicio | date: 'HH:mm'}}</td>
                 <td>{{reserva.nombre+' '}}{{reserva.apellidos}}</td>
                 <td> 
-                    <span *ngFor="let mesa of reserva.mesas"> {{mesa.numero}}, </span>
+                    <span *ngFor="let mesa of reserva.mesas; let first = first;">
+                        {{mesa.numero}},
+                        <!-- !Esto no funciona asi, arreglalo -->
+                        <!-- <span *ngIf first = true>{{mesa.numero}}</span>
+                        <span *ngIf first = false>,{{mesa.numero}}</span> -->
+                    </span>
                 </td>
                 <td>{{reserva.telefono}}</td>
                 <td>{{reserva.pax}}</td>

@@ -15,9 +15,9 @@
 
 <!-- nav. páginas de book si está activa la ruta BOOK-->
 <div *ngIf="mostrar" class="bookNav">
-    <button value="menosDia" [routerLink]="['/home/book', fechaConsulta]" (click)="getDesplazamientoConsulta($event)" ><i class="fas fa-caret-left"></i></button>
-    {{ fechaConsulta | date: 'dd . MMMM . yyyy' }}
-    <button value="masDia" [routerLink]="['/home/book', fechaConsulta]" (click)="getDesplazamientoConsulta($event)" > <i class="fas fa-caret-left"></i> </button>
+    <button value="menosDia" (click)="getDesplazamientoConsulta($event)" [routerLink]="['/home/book', fechaConsulta]"><i class="fas fa-caret-left"></i></button>
+        {{ fechaConsulta | date: 'dd . MMMM . yyyy' }}
+    <button value="masDia" (click)="getDesplazamientoConsulta($event)" [routerLink]="['/home/book', fechaConsulta]"> <i class="fas fa-caret-left"></i> </button>
 </div>
 <!-- fin nav. book -->
 
