@@ -1,30 +1,108 @@
 .map{
-    margin-top: 40px;
+    /* margin-top: 40px; */
     width: 96%;
     margin: 0 auto;
-    margin-top: 40px;
-}
-
-.map>button{
-    background-color: var(--color-negro);
-    border: none;
-    border-top-left-radius: 8px ;
-    border-top-right-radius: 8px;
-    color: var(--color-blanco);
-    font-family: 'Mukta', sans-serif;
-    font-size: 20px;
-    padding: 6px 20px;
-}
-.map>button:first-of-type{
-    margin-right: 10px;
+    /* margin-top: 40px; */
 }
 .map .container{
     background-color: var(--color-negro);
     border: 1px solid var(--color-negro);
 }
 
-.activated:after{
+.mapone{
+    margin: 10px 10px;
+    background-color: rgb(252, 223, 192);
+    border: 1px solid rgb(252, 223, 192);
+    /* height: 70vh; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* FONDO; MESAS Y SILLAS DE CADA MAPA */
+.mapone .mesa {
+    height: 100px;
+    width: 100px;
+    background-color: var(--color-negro);
+    border-radius: 50%;
+    position: relative;
+    margin: 60px;
+    transform: rotateZ(45deg);
+}
+.mapone .mesa #num{
+    font-size: 20px;
+    color: var(--color-black);
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top: 0;
+}
+.mapone .mesa .silla1{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: -28px;
+    left: 34px;
+}
+.mapone .mesa .silla1:after{
     content: "";
     display: block;
-    height: 10px;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: -10px;
 }
+.mapone .mesa .silla2{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 102px;
+    left: 34px;
+}
+.mapone .mesa .silla2:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+.mapone .mesa .silla3{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 36px;
+    left: -30px;
+    transform: rotate(90deg);
+}
+.mapone .mesa .silla3:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+.mapone .mesa .silla4{
+    position: absolute;
+    height: 26px;
+    width: 32px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    top: 36px;
+    right: -30px;
+    transform: rotate(-90deg);
+}
+.mapone .mesa .silla4:after{
+    content: "";
+    display: block;
+    height: 8px;
+    background-color: var(--color-negro);
+    border-radius: 6px;
+    margin-top: 28px;
+}
+

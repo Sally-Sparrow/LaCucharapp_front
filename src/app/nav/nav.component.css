@@ -44,6 +44,45 @@
 }
 
 
+
+/* ---- nav map ---- */
+.menumap{
+  margin-top: 40px;
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.menumap>button{
+  background-color: var(--color-negro);
+  border: none;
+  border-top-left-radius: 8px ;
+  border-top-right-radius: 8px;
+  color: var(--color-blanco);
+  font-family: 'Mukta', sans-serif;
+  font-size: 20px;
+  padding: 6px 20px;
+}
+.menumap>button:first-of-type{
+  margin-right: 10px;
+}
+.menumap button:hover{
+  cursor: pointer;
+}
+.menumap .container{
+  background-color: var(--color-negro);
+  border: 1px solid var(--color-negro);
+}
+/*! Arregla esto */
+.activated:after{
+  content: "";
+  display: block;
+  height: 10px;
+}
+
+
+
 /* ---- nav book ---- */
 .bookNav{
     display: flex;
@@ -73,3 +112,6 @@
     color: var(--color-contraste);
     pointer-events: none;
   }
+
+
+  

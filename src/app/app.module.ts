@@ -11,8 +11,6 @@ import { NavComponent } from './nav/nav.component';
 import { MapComponent } from './map/map.component';
 import { BookComponent } from './book/book.component';
 import { ReserveComponent } from './reserve/reserve.component';
-import { MapOneComponent } from './map-one/map-one.component';
-import { MapTwoComponent } from './map-two/map-two.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,9 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavComponent,
     MapComponent,
     BookComponent,
-    ReserveComponent,
-    MapOneComponent,
-    MapTwoComponent
+    ReserveComponent
   ],
   imports: [
     BrowserModule,
