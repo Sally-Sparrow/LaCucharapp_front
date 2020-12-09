@@ -6,6 +6,7 @@ export interface Reserva{
     nombre: string;
     apellidos: string;
     telefono: number;
+    email?: string;
     mesas: number;
     pax: number;
     notas?: string;
