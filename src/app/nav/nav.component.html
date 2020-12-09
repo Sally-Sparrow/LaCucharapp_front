@@ -1,7 +1,7 @@
 <div class="nav">
     <div class="menu">
         <!-- BOTÓN MAP -->
-        <button routerLink="/home/map/inside" routerLinkActive="activated" (click)="mostrarBookNav($event)"> map </button>
+        <button [routerLink]="['/home/map', salon]" routerLinkActive="activated" (click)="mostrarMapNav($event)" value="map"> map </button>
         <!-- BOTÓN BOOK -->
         <button [routerLink]="['/home/book', fechaConsulta]" routerLinkActive="activated" (click)="mostrarBookNav($event)" value="home"> book </button>
         <!-- BOTÓN RESERVAR -->
@@ -13,9 +13,20 @@
     </div>
 </div>
 
+
+<!-- nav. mapas si está activa la ruta MAP-->
+<div *ngIf="mostrarMap" class="mapNav" >
+    <div class="menumap" *ngFor="let salon of salones"> 
+        <button (click)="getSalonData($event)" [routerLink]="['/home/map', salon]"> {{salon}}
+        </button>
+    </div>
+</div>
+<!-- fin nav. book -->
+
+
 <!-- nav. páginas de book si está activa la ruta BOOK-->
-<div *ngIf="mostrar" class="bookNav">
-    <button value="menosDia" (click)="getDesplazamientoConsulta($event)" [routerLink]="['/home/book', fechaConsulta]"><i class="fas fa-caret-left"></i></button>
+<div *ngIf="mostrarBook" class="bookNav">
+    <button value="menosDia" (click)="getDesplazamientoConsulta($event)" ><i class="fas fa-caret-left"></i></button>
         {{ fechaConsulta | date: 'dd . MMMM . yyyy' }}
     <button value="masDia" (click)="getDesplazamientoConsulta($event)" [routerLink]="['/home/book', fechaConsulta]"> <i class="fas fa-caret-left"></i> </button>
 </div>

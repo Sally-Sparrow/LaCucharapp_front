@@ -8,12 +8,18 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
+  //?Variables para book
   fechaConsulta: string;
-  mostrar: boolean;
+  mostrarBook: boolean;
   desplazamientoDias: number;
+  
+  //?variables para map
+  mostrarMap: boolean;
+  salones: string[]
 
   constructor( private router: Router) { 
     this.desplazamientoDias = 0;
+    
   }
 
 
@@ -22,13 +28,14 @@ export class NavComponent implements OnInit {
       this.fechaConsulta = this.getFecha();
   }
 
+  //? BOOK -------------------------------------------------------
   //* Muestra el navegador para paginacion de reservas por fecha*/
   mostrarBookNav($event){
     if($event.target.value === 'home'){
-      this.mostrar = true;
+      this.mostrarBook = true;
       this.desplazamientoDias = 0;
       this.fechaConsulta = this.getFecha();    
-    }else{ this.mostrar = false; }
+    }else{ this.mostrarBook = false; }
   }
 
   //*Calcula los dias desplazados respecto a la fecha actual de consulta de reservas */
@@ -42,6 +49,7 @@ export class NavComponent implements OnInit {
       
     }else{}
     this.fechaConsulta = this.getFecha();
+    this.router.navigate(['/home/book', this.fechaConsulta]);
     //habria que forzar aqui la recarga de la url, o navegar aqui en lugar de con un routerlink??
     //!! hay un descuadre entre el click en el boton y la recarga de la url, cambia la variable fecha que se muestra, y al siguiente, envia url
   }
@@ -71,7 +79,21 @@ export class NavComponent implements OnInit {
     } else { returnFechaHoy += `${dd}`; }
     //taDah! :)
     return returnFechaHoy;
-    }
+  }
 
+
+  //? MAP -------------------------------------------------------
+  //* Muestra el el menu de navegacion entre mapas*/
+  mostrarMapNav($event){
+    if($event.target.value === 'map'){
+      this.mostrarMap = true;
+      this.salones = ['Inside', 'Outside'];  //!esto viene de bbdd, haz la query   
+    }else{ this.mostrarMap = false; }
+  }
+
+  getSalonData($event){
+    console.log($event);
+    
+  }
 
 }
