@@ -17,6 +17,7 @@ export class NavComponent implements OnInit {
   mostrarMap: boolean;
   salones: string[];
   nombreSalon: string[];
+  salonInicial: string;
 
   //?variables para reservar
   mostrarForm: boolean;
@@ -30,6 +31,8 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
       this.fechaConsulta = this.getFecha();
+      this.nombreSalon = this.getNombresSalones();
+      this.salonInicial = this.nombreSalon[0];
   }
 
   
@@ -63,8 +66,7 @@ export class NavComponent implements OnInit {
   //* 
   getMapaSeleccionado($event){
     this.nombreSalon = $event.target.textContent;
-    console.log(this.nombreSalon);
-    
+
     this.router.navigate(['/home/map', this.nombreSalon]);
   }
 
