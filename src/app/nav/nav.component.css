@@ -63,6 +63,7 @@
   font-family: 'Mukta', sans-serif;
   font-size: 20px;
   padding: 6px 20px;
+  border-bottom: 4px solid var(--color-blanco);
 }
 .menumap>button:first-of-type{
   margin-right: 10px;
@@ -70,15 +71,11 @@
 .menumap button:hover{
   cursor: pointer;
 }
-.menumap .container{
-  background-color: var(--color-negro);
-  border: 1px solid var(--color-negro);
-}
-/*! Arregla esto */
-.activated:after{
-  content: "";
-  display: block;
-  height: 10px;
+
+/*! Arregla esto, no es un focus es una ngclass */
+.menumap>button:focus{
+  border-bottom: 4px solid var(--color-negro);
+  color: crimson;
 }
 
 
@@ -100,7 +97,7 @@
     border: none;
     padding-right: 20px;
   }
-  .bookNav buttton:hover{
+  .bookNav button:hover{
     cursor: pointer;
   }
   .bookNav button:last-of-type{

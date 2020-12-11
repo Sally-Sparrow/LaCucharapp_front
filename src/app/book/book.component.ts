@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Reserva } from '../interfaces/reserva.interface';
-import { ReservaService } from '../services/reserva.service';
+import { ReservasService } from '../services/reserva.service';
 
 @Component({
   selector: 'app-book',
@@ -17,7 +17,7 @@ export class BookComponent implements OnInit {
   fechaPosterior: string;
 
   constructor( 
-    private reservaService: ReservaService,
+    private reservaService: ReservasService,
     private activatedRoute: ActivatedRoute
     ) 
   { 

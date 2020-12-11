@@ -18,7 +18,6 @@
 <div *ngIf="mostrarMap" class="mapNav" >
     <div class="menumap" > 
         <button *ngFor="let salon of salones" (click)="getMapaSeleccionado($event)">{{salon}}</button>
-        <div class="container"></div>
     </div>
 </div>
 <!-- fin nav. map -->
@@ -35,7 +34,7 @@
 
 <!-- nav. form si está activa la ruta RESERVE-->
 <div *ngIf="mostrarForm" class="formNav">
-    todo ok en subnav form
+
 </div>
 <!-- fin nav. RESERVE -->
 

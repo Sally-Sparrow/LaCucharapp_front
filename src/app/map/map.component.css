@@ -1,6 +1,6 @@
 .map{
     /* margin-top: 40px; */
-    width: 96%;
+    /* width: 96%; */
     margin: 0 auto;
     /* margin-top: 40px; */
 }
@@ -11,8 +11,8 @@
 
 .mapone{
     margin: 10px 10px;
-    background-color: rgb(252, 223, 192);
-    border: 1px solid rgb(252, 223, 192);
+    background-color: RGB(250, 250, 250);
+    border: 1px solid RGB(250, 250, 250);
     /* height: 70vh; */
     display: flex;
     flex-wrap: wrap;

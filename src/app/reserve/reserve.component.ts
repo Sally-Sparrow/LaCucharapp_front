@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReservasService } from '../services/reserva.service';
 
 @Component({
   selector: 'app-reserve',
@@ -11,7 +12,9 @@ export class ReserveComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor() {
+  constructor( private reservasService: ReservasService ) 
+  {
+
     this.form = new FormGroup({
       nombre: new FormControl('', [
         Validators.required
@@ -47,8 +50,9 @@ export class ReserveComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
 
+    console.log(this.form.value);
+    this.form.reset();
   }
 
 }
