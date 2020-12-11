@@ -4,6 +4,7 @@
     margin-top: 20px;
     margin-right: 20px;
     margin-left: 20px;
+    font-family: var(--fuente);
 }
 .nav .menu{
     width: 30%;
@@ -13,18 +14,17 @@
 .nav .menu button{
     background: none;
     border: none;
-    font-family: 'Righteous', cursive;
+    font-weight: 100;
     font-size: 26px;
     text-transform: uppercase;
 }
 .activated:after{
     content: "";
     display: block;
-    height: 10px;
-    width: 110%;
+    height: 4px;
+    width: 60%;
     margin: 0 auto;
-    margin-top: -14px;
-    margin-left: -5px;
+    margin-top: 2px;
     background-color: var(--color-contraste);
 }
 .nav .menu button:hover{
@@ -36,7 +36,7 @@
 .nav .out button{
     border: none;
     background: none;
-    color: var(--color-negro);
+    color: var(--negro);
     font-size: 30px;
 }
 .nav .out button:hover{
@@ -55,15 +55,14 @@
   flex-direction: row;
 }
 .menumap>button{
-  background-color: var(--color-negro);
+  background-color: var(--gris);
   border: none;
-  border-top-left-radius: 8px ;
   border-top-right-radius: 8px;
-  color: var(--color-blanco);
-  font-family: 'Mukta', sans-serif;
+  color: var(--negro);
+  font-weight: 100;
   font-size: 20px;
   padding: 6px 20px;
-  border-bottom: 4px solid var(--color-blanco);
+  border-bottom: 4px solid var(--blanco);
 }
 .menumap>button:first-of-type{
   margin-right: 10px;
@@ -74,7 +73,7 @@
 
 /*! Arregla esto, no es un focus es una ngclass */
 .menumap>button:focus{
-  border-bottom: 4px solid var(--color-negro);
+  border-bottom: 4px solid var(--negro);
   color: crimson;
 }
 
@@ -84,10 +83,11 @@
 .bookNav{
     display: flex;
     margin-top: 40px;
-    background-color: rgb(40, 40, 40);
+    background-color: var(--blanco);
     font-size: 20px;
-    color: var(--color-blanco);
-    font-family: 'Mukta', sans-serif;
+    color: var(--negro);
+    font-family: var(--fuente);
+    font-weight: 400;
     align-items: center;
     justify-content: center;
     padding: 5px;

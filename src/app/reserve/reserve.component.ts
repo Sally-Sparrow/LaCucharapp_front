@@ -10,6 +10,7 @@ import { ReservasService } from '../services/reserva.service';
 export class ReserveComponent implements OnInit {
 
   form: FormGroup;
+  pasoFormulario: number;
 
 
   constructor( private reservasService: ReservasService ) 
@@ -42,11 +43,18 @@ export class ReserveComponent implements OnInit {
       numero_mesa9: new FormControl,
       numero_mesa10: new FormControl,
       nota: new FormControl,
+    });
 
-    })
+    
   }
 
   ngOnInit(): void {
+    this.pasoFormulario = 1; //por defecto está en el paso 1: datos del cliente.
+  }
+
+  //Cambiar vistas formulario
+  onClickNext(){
+    this.pasoFormulario = 2; 
   }
 
   onSubmit() {

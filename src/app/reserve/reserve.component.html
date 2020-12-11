@@ -1,14 +1,17 @@
-<div class="form">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <p>Datos del cliente</p>
-        <div class="datos-cliente">
-            <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre">
-            <input id="apellidos" type="text" formControlName="apellidos" placeholder="Apellidos">
-            <input id="telefono" type="text" formControlName="telefono" placeholder="Teléfono">
-            <input id="email" type="text" formControlName="email" placeholder="Email">
+<div class="form" [ngSwitch]="pasoFormulario">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+        <!-- * VISTA DATOS DEL CLIENTE -->
+        <div class="datos-cliente" *ngSwitchCase="1">
+            <p>Datos del cliente</p>
+            <input type="text" formControlName="nombre" placeholder="Nombre">
+            <input type="text" formControlName="apellidos" placeholder="Apellidos">
+            <input type="text" formControlName="telefono" placeholder="Teléfono">
+            <input type="text" formControlName="email" placeholder="Email">
+            <button id="next" (click)="onClickNext()">next</button>
         </div>
-        <p>Datos de la reserva</p>
-        <div class="datos-reserva">
+        <!-- * VISTA DATOS DE LA RESERVA -->
+        <div class="datos-reserva" *ngSwitchCase="2">
+            <p>Datos de la reserva</p>
             <input id="fecha" type="date" formControlName="fecha" placeholder="Fecha">
             <div class="select">
                 <select formControlName="servicios">
@@ -33,10 +36,36 @@
             </div>
             <input id="pax" type="number" min="1" formControlName="personas" placeholder="pax">
         </div>
+        <!-- <p>Datos de la reserva</p>
+        <div class="datos-reserva">
+            <input id="fecha" type="date" formControlName="fecha" placeholder="Fecha">
+            <div class="select">
+                <select formControlName="servicios">
+                    <optgroup class="form-control" label="Turno Comida">
+                        <option value="turno_comida1">13:00</option>
+                        <option value="turno_comida2">13:30</option>
+                        <option value="turno_comida3">14:00</option>
+                        <option value="turno_comida4">14:30</option>
+                        <option value="turno_comida5">15:00</option>
+                        <option value="turno_comida6">15:30</option>
+                    </optgroup>
+                    <optgroup class="form-control" label="Turno Cena">
+                        <option value="turno_cena1">20:30</option>
+                        <option value="turno_cena2">21:00</option>
+                        <option value="turno_cena3">21:30</option>
+                        <option value="turno_cena4">22:00</option>
+                        <option value="turno_cena5">22:30</option>
+                        <option value="turno_cena6">23:00</option>
+                    </optgroup>
+                </select>
+                <span class="flechadesplegable"></span>
+            </div>
+            <input id="pax" type="number" min="1" formControlName="personas" placeholder="pax">
+        </div> -->
 
-        <div class="mesas">
+        <!-- <div class="mesas"> -->
             <!--TODO iterables, dependiendo del nºmesas  -->
-            <div>
+            <!-- <div>
                 <input type="checkbox" value="mesa-1" formControlName="numero_mesa1" id="mesa1">
                 <label for="mesa1"></label> 
                 <span>Mesa 1</span>
@@ -87,25 +116,25 @@
                 <label for="mesa10"></label> 
                 <span>Mesa 10</span>
             </div>
-        </div>
+        </div> -->
 
-        <div class="nota-firma">
+        <!-- <div class="nota-firma">
             <div class="nota">
                 <textarea formControlName="nota" placeholder="Notas">  </textarea>
             </div>
 
-            <div class="firma">
+            <div class="firma"> -->
                 <!--TODO iterable, dependiendo del nº empleados -->
-                <p>Firmar y reservar</p>
+                <!-- <p>Firmar y reservar</p>
                 <div class="users">
                     <div>
                         <input type="submit" class="form-control" value="Pedro">
                         <div>
                             <div class="myicon">
                                 <div class="head"></div>
-                            </div>
+                            </div> -->
                             <!-- TODO nombres vienen de config -->
-                            <p>Pedro</p>
+                            <!-- <p>Pedro</p>
                         </div>
                     </div>
                     <div>
@@ -128,6 +157,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </form>
 </div>

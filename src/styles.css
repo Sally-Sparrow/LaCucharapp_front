@@ -3,20 +3,23 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
 
 /*! ---------  FUENTE  ----------- */
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400&display=swap');
-/* font-family: 'Mukta', sans-serif; */
-
-/*TODO podría ser una opcion para funte grande*/
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-/* font-family: 'Righteous', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+/* font-family: 'Roboto', sans-serif; */
 
 /*! ---------  COLOR  ------------ */
 :root{
+	--blanco: RGB( 255, 255, 255 );
+	--gris: RGB( 228, 228, 228 );
+	--negro: RGB( 41, 41, 41 ); 
+	--color-contraste: RGB( 217, 0, 112 );
+	/* --color-contraste: RGB( 204, 255, 51 ); */
+	
+	--fuente: 'Roboto', sans-serif;
+	/*
 	--color-negro: RGB( 26, 26, 26 );
 	--color-negro-trans: RGB( 26, 26, 26, 0.3 );
-    --color-blanco: RGB( 255, 255, 255 );
-	--color-contraste: RGB( 204, 255, 51 );
 	--color-contraste-trans: RGB( 204, 255, 51, 0.8 );
+	*/
 }
 
 

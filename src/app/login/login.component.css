@@ -44,7 +44,7 @@
 .pass .form i{
     position: absolute;
     right: 15px;
-    color: var(--color-negro);
+    color: var(--negro);
     font-size: 30px;
 }
 .pass .form i:hover{

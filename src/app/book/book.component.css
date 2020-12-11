@@ -2,9 +2,10 @@
   box-sizing: border-box;
 }
 .book{
-  background-color: var(--color-negro);
-  color: var(--color-blanco);
-  font-family: 'Mukta', sans-serif;
+  /* background-color: var(--negro); */
+  color: var(--negro);
+  font-family: var(--fuente);
+  font-weight: 100;
 }
 
 /* ---- Tabla reservas ---- */
@@ -16,16 +17,17 @@ table {
 
 /* ---- cabecera ---- */
 table thead{
-  font-family: 'Righteous', cursive;
+  text-transform: uppercase;
   font-size: 20px;
   text-align: center;
 }
 table thead th{
   padding: 15px;
-  border-right: 1px solid #999;
+  border-right: 1px solid var(--gris);
+  border-top: 1px solid var(--gris)
 }
 table thead th:last-of-type{
-  border: none;
+  border-right: none;
 }
 
 /* ---- body ---- */
@@ -62,16 +64,17 @@ table td{
 }
 table td:first-child{
   padding-left: 40px;
-  color: var(--color-contraste);
+  color: var(--negro);
+  font-weight: 400;
 }
 
 /* ----- cebra ---- */
 
 table tr:nth-child(even) {
-  background-color: var(--color-negro);
+  background-color: var(--blanco);
 }
 table tr:nth-child(odd) {
-  background-color: rgb(40, 40, 40);
+  background-color: var(--gris);
 }
 
  
