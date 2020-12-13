@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 .book{
-  /* background-color: var(--negro); */
   color: var(--negro);
   font-family: var(--fuente);
   font-weight: 100;
 }
+
+
 
 /* ---- Tabla reservas ---- */
 table {
@@ -15,16 +16,22 @@ table {
   width: 100%;
 }
 
+
+
 /* ---- cabecera ---- */
 table thead{
   text-transform: uppercase;
   font-size: 20px;
+  color: var(--color-contraste);
   text-align: center;
 }
 table thead th{
   padding: 15px;
   border-right: 1px solid var(--gris);
   border-top: 1px solid var(--gris)
+}
+table thead th:nth-child(6){
+  border-right: 0;
 }
 table thead th:last-of-type{
   border-right: none;
@@ -40,7 +47,7 @@ thead th:nth-child(1) {
 }
 /*? nombre */
 thead th:nth-child(2) {
-  width: 32%;
+  width: 27%;
 }
 /*? mesa */
 thead th:nth-child(3) {
@@ -58,6 +65,10 @@ thead th:nth-child(5){
 thead th:nth-child(6){
   width: 20%;
 }
+/*? Editar */
+thead th:nth-child(7){
+  width: 5%;
+}
 table td{
   text-align: left;
   padding: 20px;
@@ -68,13 +79,37 @@ table td:first-child{
   font-weight: 400;
 }
 
-/* ----- cebra ---- */
 
+
+/* ----- cebra ---- */
 table tr:nth-child(even) {
   background-color: var(--blanco);
 }
 table tr:nth-child(odd) {
   background-color: var(--gris);
+}
+
+
+/* ---- Botón editar ---- */
+/* .pen{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: var(--color-contraste);
+  color: var(--blanco);
+  position: relative;
+} */
+.pen i{
+  /* position: absolute;
+  left: 8px;
+  top: 6px; */
+  color: var(--color-contraste);
+  font-size: 24px;
+}
+.pen i:hover{
+  cursor: pointer;
 }
 
  

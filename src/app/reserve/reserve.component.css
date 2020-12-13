@@ -1,3 +1,4 @@
+/* ---- ESTILOS GENERALES ---- */
 .form{
     background-color: var(--gris);
     width: 100%;
@@ -7,107 +8,82 @@
     font-family: var(--fuente);
     font-weight: 100;
 }
+form{
+    display: flex;
+    flex-direction: row;
+    width: 80%; 
+    margin: 0 auto;
+}
+form>div{
+    background-color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 10px #999;
+}
+form div p{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--color-contraste);
+    border-left: 4px solid var(--color-contraste);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 40px;
+}
+form div p span{
+    margin-left: 100px;
+    font-size: 50px;
+}
+
+
+/* Input */
 form input{
     border: none;
+    background: none;
+    color: var(--negro);
+    border-bottom: 2px solid var(--gris);
     font-size: 24px;
     width: 72%;
     align-self: center;
     margin-bottom: 50px;
-    border-bottom: 2px solid var(--gris);
     font-weight: 100;
 }
-
-
-
-/**----  DATOS CLIENTE  ---- */
-form .datos-cliente{
-    background-color: var(--blanco);
-    border-right: 1px solid var(--negro);
-    border-bottom: 1px solid var(--negro);
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: 0 auto;
+form input:focus{
+    outline: none;
 }
-form .datos-cliente p{
-    color: var(--color-contraste);
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 26px;
-    margin-top: 50px;
+
+
+/* Select */
+form div .select{
+    width: 72%;
     margin-bottom: 50px;
-    padding-left: 40px;
-    border-left: 4px solid var(--color-contraste);
-}
-form .datos-cliente input{
-    color: var(--negro);
-}
-form .datos-cliente input:focus{
-    outline: none;
-}
-form .datos-cliente button{
-    width: 40%;
-    height: 50px;
-    font-size: 24px;
-    margin-bottom: 40px;
-    align-self: center;
-    color: var(--color-contraste);
-    text-transform: capitalize;
-    font-weight: 400;
-    background-color: var(--blanco);
-    border: 2px solid var(--color-contraste);
-}
-form .datos-cliente button:hover{
-    cursor: pointer;
-    color: var(--blanco);
-    background-color: var(--color-contraste);
-    border: 2px solid var(--color-contraste);
-}
-
-
-/**----  DATOS RESERVA  ---- */
-form .datos-reserva{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: 0 auto;
-    color: var(--blanco);
-    background-color: var(--color-contraste);
-    border-right: 1px solid var(--negro);
-    border-bottom: 1px solid var(--negro);
-}
-form .datos-reserva input{
-
-}
-form .datos-reserva .select{
-    width: 30%;
-    margin-bottom: 20px;
-    height: 25px;
     position: relative;
-    appearance: none;
+    align-self: center;
+    box-shadow: none;
 }
-form .datos-reserva .select select{
+form div .select select{
     width: 100%;
-    height: 100%;
-    font-size: 16px;
-    border-radius: 16px;
-    padding-left: 10px;
-    appearance: none;
+    font-size: 24px;
+    font-weight: 100;
+    color: var(--black);
     border: none;
+    background: none;
+    appearance: none;
+    border-bottom: 2px solid var(--gris);
 }
-form .datos-reserva .select select:focus{
+form div .select select:focus{
     outline: none;
-    border: 2px solid var(--color-contraste); 
 }
 /* flecha desplegable select */
 .flechadesplegable{
     position: absolute;
     display: block;
-    background-color: var(--color-contraste);
-    height: 100%;
+    background-color: var(--blanco);
+    height: 85%;
     width: 30px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 50%;
     top: 0;
     right: 0;
     pointer-events: none;
@@ -115,53 +91,149 @@ form .datos-reserva .select select:focus{
 .flechadesplegable::before{
     position: absolute;
     content: "";
-    border-top: 8px solid var(--color-negro);
+    border-top: 8px solid var(--color-contraste);
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     right: 7px;
-    top: 10px;
+    top: 12px;
 }
-form .datos-reserva #pax{
-    width: 30%;
+/* fin flecha desplegable select */
+
+
+/* Button */
+form div button{
+    width: 40%;
+    height: 50px;
+    font-size: 24px;
+    margin-bottom: 40px;
+    align-self: center;
+    color: var(--color-contraste);
+    /* text-transform: capitalize; */
+    font-weight: 400;
+    background-color: var(--blanco);
+    border: 2px solid var(--color-contraste);
 }
-.mesas{
+form div button:hover{
+    cursor: pointer;
+    color: var(--blanco);
+    background-color: var(--color-contraste);
+    border: 2px solid var(--color-contraste);
+}
+
+
+/**----  DATOS CLIENTE  ---- */
+
+/**----  DATOS RESERVA  ---- */
+/* form .datos-reserva p span{
+    margin-left: 180px;
+    font-size: 50px;
+} */
+/**----  RESERVA -> Mesas  ---- */
+.form form .nomesas{
+    display: none;
+}
+.form form .mesas{
+    background-color: var(--color-contraste);
+    color: var(--color-blanco);
+}
+.form form .mesas p{
+    color: var(--blanco);
+    border-left: 4px solid var(--blanco);
+}
+.form form .mesas>div{
+    background: none;
+    margin: 0 auto;
+    width: 86%;
+    border: 2px solid var(--blanco);
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    color: var(--color-blanco);
-    border: 1px solid var(--color-blanco);
 }
-.mesas div{
+
+
+
+/* ---- navegador espacio-mesas ---- */
+.form form .mesas .salonesNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    border: none;
+}
+.form form .mesas .salonesNav button{
+    background: none;
+    border: 2px solid var(--blanco);
+    border-top-right-radius: 8px;
+    color: var(--blanco);
+    margin: 0 0;
+    margin-left: -2px;
+    margin-right: 10px;
+    height: 30px;
+    font-size: 16px;
+    width: fit-content;
+}
+/*! a ver como apañas esta mierda...*/
+.form form .mesas .salonesNav button .seleccionado{
+    border-bottom: 2px solid var(--color-contraste);
+}
+.form form .mesas .checkboxes div{
+    background: none;
     padding: 20px;
-} 
+    background: none;
+    box-shadow: none; 
+}
+
+
 
 /* CHECKBOX MESAS */
-
 [type="checkbox"] {
     display: none;
 }
-.mesas div span{
+.form form .mesas>div div span{
+    color: var(--blanco);
     margin-left: 16px;
 }
 label:before {
     content: ' ';
-    border: solid 1px var(--color-blanco);
+    border: solid 1px var(--blanco);
     width: 0.8em;
     height: 0.8em;
     position: absolute;
 }
 
 [type="checkbox"]:checked + label:before {
-    color: var(--color-contraste);
-    border-color: var(--color-contraste) ;
+    color: var(--blanco);
+    border-color: var(--blanco) ;
     content: '\f00c';
     font-family: 'Font Awesome\ 5 Free';
     font-weight: 900;
 }
 
 
+/* ---- Notas ---- */
+.form>form>.mesas>.notas{
+  border: none; 
+} 
+.notas>textarea{
+    width: 100%;
+    height: 80px;
+    margin-top: 36px;
+    margin-bottom: 36px; 
+}
+#reservar{
+    background-color: var(--color-contraste);
+    border: 2px solid var(--blanco);
+    color: var(--blanco);
+}
+#reservar:hover{
+    background-color: var(--blanco);
+    border: 2px solid var(--color-contraste);
+    color: var(--color-contraste);
+}
+
+
 /* ---- NOTAS Y FIRMA ---- */
-form .nota-firma{
+/* form .nota-firma{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -175,10 +247,10 @@ form .nota-firma .nota textarea{
     height: 100%;
     border-radius: 8px;
     font-size: 16px;
-}
+} */
 
 /* ICONOS FIRMA */
-form .nota-firma .firma{
+/* form .nota-firma .firma{
     width: 50%;
 }
 form .nota-firma .firma .users{
@@ -211,18 +283,18 @@ form .nota-firma .firma .users div div .myicon{
     border-radius: 50%;
     width: 72px;
     height: 72px;
-}
+} */
 /* cabeza */
-form .nota-firma .firma .users div div .myicon .head{
+/* form .nota-firma .firma .users div div .myicon .head{
     border-radius: 50%;
     background-color: var(--color-blanco);
     width: 40px;
     height: 40px;
     margin: 0 auto;
     margin-top: 10px;
-}
+} */
 /* pajaritas */
-form .nota-firma .firma .users div div .myicon .head::before,
+/* form .nota-firma .firma .users div div .myicon .head::before,
 form .nota-firma .firma .users div div .myicon .head::after{
     --size: 8px;
     content: "";
@@ -246,14 +318,16 @@ form .nota-firma .firma .users div div p{
     text-align: center;
     margin-top: 5px;
     color: var(--color-blanco);
-}
+} */
+
+
+
 
 /* ---- MEDIA QUERYS ---- */
-
-@media( max-width: 800px ){
+/* @media( max-width: 800px ){ */
 
     /* datos de cliente */
-    form .datos-cliente{
+    /* form .datos-cliente{
         flex-direction: column;
     } 
     form .datos-cliente #nombre, #apellidos{
@@ -264,10 +338,10 @@ form .nota-firma .firma .users div div p{
     }
     form .datos-cliente #email{
         width: 100%;
-    }
+    } */
 
     /* datos de reserva */
-    form .datos-reserva{
+    /* form .datos-reserva{
         flex-direction: column;
     }
     form .datos-reserva #fecha{
@@ -278,10 +352,10 @@ form .nota-firma .firma .users div div p{
     }
     form .datos-reserva #pax{
         width: 100%;
-    }
+    } */
 
     /* notas y firma */
-    form .nota-firma{
+    /* form .nota-firma{
         flex-direction: column;
     }
     form .nota-firma .nota{
@@ -291,7 +365,7 @@ form .nota-firma .firma .users div div p{
     form .nota-firma .firma{
         width: 100%;
     }
-}
+} */
 
 
 

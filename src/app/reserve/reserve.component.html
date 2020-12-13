@@ -2,19 +2,21 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" >
         <!-- * VISTA DATOS DEL CLIENTE -->
         <div class="datos-cliente" *ngSwitchCase="1">
-            <p>Datos del cliente</p>
+            <p>Datos del cliente<span><i class="fas fa-user-edit"></i></span></p>
             <input type="text" formControlName="nombre" placeholder="Nombre">
             <input type="text" formControlName="apellidos" placeholder="Apellidos">
             <input type="text" formControlName="telefono" placeholder="Teléfono">
             <input type="text" formControlName="email" placeholder="Email">
-            <button id="next" (click)="onClickNext()">next</button>
+            <button id="next" (click)="onClickNext()">Fecha y Hora</button>
         </div>
         <!-- * VISTA DATOS DE LA RESERVA -->
-        <div class="datos-reserva" *ngSwitchCase="2">
-            <p>Datos de la reserva</p>
-            <input id="fecha" type="date" formControlName="fecha" placeholder="Fecha">
+        <div class="datos-reserva" *ngSwitchCase="2" [ngClass]="{'reserva-con-mesas': false}">
+            <p>Datos de la reserva<span><i class="fas fa-utensils"></i></span></p>
+            <!-- ! ñapaaa !! -->
+            <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
             <div class="select">
                 <select formControlName="servicios">
+                    <option disabled selected="selected">Hora</option>
                     <optgroup class="form-control" label="Turno Comida">
                         <option value="turno_comida1">13:00</option>
                         <option value="turno_comida2">13:30</option>
@@ -34,129 +36,86 @@
                 </select>
                 <span class="flechadesplegable"></span>
             </div>
-            <input id="pax" type="number" min="1" formControlName="personas" placeholder="pax">
+            <input id="pax" type="text" min="1" formControlName="personas" placeholder="Comensales">
+            <div class="select">
+                <select formControlName="salon">
+                    <option disabled selected="selected">Salón</option>
+                    <option value="interior">Interior</option>
+                    <option value="exterior">Exterior</option>
+                </select>
+                <span class="flechadesplegable"></span>
+            </div>
+            <button id="verMesas" (click)="onClickVerMesas()">Ver mesas</button>
         </div>
-        <!-- <p>Datos de la reserva</p>
-        <div class="datos-reserva">
-            <input id="fecha" type="date" formControlName="fecha" placeholder="Fecha">
-            <div class="select">
-                <select formControlName="servicios">
-                    <optgroup class="form-control" label="Turno Comida">
-                        <option value="turno_comida1">13:00</option>
-                        <option value="turno_comida2">13:30</option>
-                        <option value="turno_comida3">14:00</option>
-                        <option value="turno_comida4">14:30</option>
-                        <option value="turno_comida5">15:00</option>
-                        <option value="turno_comida6">15:30</option>
-                    </optgroup>
-                    <optgroup class="form-control" label="Turno Cena">
-                        <option value="turno_cena1">20:30</option>
-                        <option value="turno_cena2">21:00</option>
-                        <option value="turno_cena3">21:30</option>
-                        <option value="turno_cena4">22:00</option>
-                        <option value="turno_cena5">22:30</option>
-                        <option value="turno_cena6">23:00</option>
-                    </optgroup>
-                </select>
-                <span class="flechadesplegable"></span>
-            </div>
-            <input id="pax" type="number" min="1" formControlName="personas" placeholder="pax">
-        </div> -->
-
-        <!-- <div class="mesas"> -->
+        <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}"> 
+            <p>Mesas</p>
             <!--TODO iterables, dependiendo del nºmesas  -->
-            <!-- <div>
-                <input type="checkbox" value="mesa-1" formControlName="numero_mesa1" id="mesa1">
-                <label for="mesa1"></label> 
-                <span>Mesa 1</span>
-            </div>
-
-            <div>
-                <input type="checkbox" value="mesa-2" formControlName="numero_mesa2" id="mesa2">
-                <label for="mesa2"></label> 
-                <span>Mesa 2</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa 3" formControlName="numero_mesa3" id="mesa3">
-                <label for="mesa3"></label> 
-                <span>Mesa 3</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-4" formControlName="numero_mesa4" id="mesa4">
-                <label for="mesa4"></label> 
-                <span>Mesa 4</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-5" formControlName="numero_mesa5" id="mesa5">
-                <label for="mesa5"></label> 
-                <span>Mesa 5</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-6" formControlName="numero_mesa6" id="mesa6">
-                <label for="mesa6"></label> 
-                <span>Mesa 6</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-7" formControlName="numero_mesa7" id="mesa7">
-                <label for="mesa7"></label> 
-                <span>Mesa 7</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-8" formControlName="numero_mesa8" id="mesa8">
-                <label for="mesa8"></label>
-                <span>Mesa 8</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-9" formControlName="numero_mesa9" id="mesa9">
-                <label for="mesa9"></label> 
-                <span>Mesa 9</span>
-            </div>
-            <div>
-                <input type="checkbox" value="mesa-10" formControlName="numero_mesa10" id="mesa10">
-                <label for="mesa10"></label> 
-                <span>Mesa 10</span>
-            </div>
-        </div> -->
-
-        <!-- <div class="nota-firma">
-            <div class="nota">
-                <textarea formControlName="nota" placeholder="Notas">  </textarea>
-            </div>
-
-            <div class="firma"> -->
-                <!--TODO iterable, dependiendo del nº empleados -->
-                <!-- <p>Firmar y reservar</p>
-                <div class="users">
-                    <div>
-                        <input type="submit" class="form-control" value="Pedro">
-                        <div>
-                            <div class="myicon">
-                                <div class="head"></div>
-                            </div> -->
-                            <!-- TODO nombres vienen de config -->
-                            <!-- <p>Pedro</p>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="submit" class="form-control" value="Javier">
-                        <div>
-                            <div class="myicon">
-                                <div class="head"></div>
-                            </div>
-                            <p>Javier</p>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="submit" class="form-control" value="Estela">
-                        <div>
-                            <div class="myicon">
-                                <div class="head"></div>
-                            </div>
-                            <p>Estela</p>
-                        </div>
-                    </div>
+            <!-- nav. mapas si está activa la ruta MAP-->
+            <div class="salonesNav" >
+                <div class="menumap" > 
+                <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event)" class="seleccionado">{{salon}}</button>
                 </div>
             </div>
-        </div> -->
+            <!-- fin nav. map -->
+            <div class="checkboxes">
+                <!-- ngFor en funcion del numero de mesas del espacio -->
+                <div class="mesa" *ngFor="let mesa of mesasSalon">
+                    <input type="checkbox" value={{mesa.numero}} formControlName={{mesa.numero}}>
+                    <label for={{mesa.numero}}></label> 
+                    <span>{{mesa.numero}}</span>
+                </div>
+
+                <!-- <div>
+                    <input type="checkbox" value="mesa-2" formControlName="numero_mesa2" id="mesa2">
+                    <label for="mesa2"></label> 
+                    <span>Mesa 2</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa 3" formControlName="numero_mesa3" id="mesa3">
+                    <label for="mesa3"></label> 
+                    <span>Mesa 3</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-4" formControlName="numero_mesa4" id="mesa4">
+                    <label for="mesa4"></label> 
+                    <span>Mesa 4</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-5" formControlName="numero_mesa5" id="mesa5">
+                    <label for="mesa5"></label> 
+                    <span>Mesa 5</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-6" formControlName="numero_mesa6" id="mesa6">
+                    <label for="mesa6"></label> 
+                    <span>Mesa 6</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-7" formControlName="numero_mesa7" id="mesa7">
+                    <label for="mesa7"></label> 
+                    <span>Mesa 7</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-8" formControlName="numero_mesa8" id="mesa8">
+                    <label for="mesa8"></label>
+                    <span>Mesa 8</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-9" formControlName="numero_mesa9" id="mesa9">
+                    <label for="mesa9"></label> 
+                    <span>Mesa 9</span>
+                </div>
+                <div>
+                    <input type="checkbox" value="mesa-10" formControlName="numero_mesa10" id="mesa10">
+                    <label for="mesa10"></label> 
+                    <span>Mesa 10</span>
+                </div> -->
+            </div>
+            <div class="notas">
+                <textarea formControlName="nota" placeholder="Notas">  </textarea>
+            </div>
+            <button id="reservar">Reservar</button>
+        </div>
+
     </form>
 </div>

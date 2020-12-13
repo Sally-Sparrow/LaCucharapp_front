@@ -1,5 +1,5 @@
 <div class="book">
-
+    
     <table>
         <thead>
             <th>Hora</th>
@@ -8,6 +8,7 @@
             <th>Teléfono</th>
             <th>Pax</th>
             <th>Notas</th>
+            <th></th>
         </thead>
         <tbody>
             <tr *ngFor="let reserva of reservasDelDia">
@@ -23,6 +24,7 @@
                 <td>{{reserva.telefono}}</td>
                 <td>{{reserva.pax}}</td>
                 <td>{{reserva.notas}}</td>
+                <td><div class="pen"><i class="fas fa-pen"></i></div></td>
             </tr>
         </tbody>
     </table>
