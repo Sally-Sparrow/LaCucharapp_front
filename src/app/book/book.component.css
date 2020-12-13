@@ -9,6 +9,38 @@
 
 
 
+/* ---- Block ---- */
+.block{
+  height: 40px;
+  background-color: var(--color-contraste);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.anilla{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--negro);
+}
+.anilla::after{
+  content: "";
+  display: block;
+  height: 60px;
+  width: 10px;
+  background-color: var(--blanco);
+  border: 1px solid var(--gris);
+  border-radius: 8px;
+  margin-top: -46px;
+  margin-left: 3.5px;
+}
+
+
+
+
 /* ---- Tabla reservas ---- */
 table {
   table-layout: fixed;
