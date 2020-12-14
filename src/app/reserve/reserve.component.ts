@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Mesas } from '../interfaces/mesas.interface';
 import { ReservasService } from '../services/reserva.service';
+//import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reserve',
@@ -13,10 +14,13 @@ export class ReserveComponent implements OnInit {
   form: FormGroup;
   pasoFormulario: number;
 
+  formArray: FormArray; 
+
   nombresSalones: string[];
   mostrarMesas: boolean;
   mesasSalon: Mesas[];
 
+  //!@ViewChild('selectHora') selectHora: ElementRef;
 
   constructor( private reservasService: ReservasService ) 
   {
@@ -38,18 +42,9 @@ export class ReserveComponent implements OnInit {
       turno_comida: new FormControl,
       turno_cena: new FormControl,
       salon: new FormControl,
-       //! puedo iterar form controls aqui ???
-      numero_mesa1: new FormControl,
-      numero_mesa2: new FormControl,
-      numero_mesa3: new FormControl,
-      numero_mesa4: new FormControl,
-      numero_mesa5: new FormControl,
-      numero_mesa6: new FormControl,
-      numero_mesa7: new FormControl,
-      numero_mesa8: new FormControl,
-      numero_mesa9: new FormControl,
-      numero_mesa10: new FormControl,
-      
+
+      numerosdemesas: new FormArray([]),
+
       nota: new FormControl,
     });
 
@@ -79,10 +74,30 @@ export class ReserveComponent implements OnInit {
   }
   //* 
   async getMesasSalones($event){
-    //recoger un string con los nombres de las mesas en cada espacio e iterar los checkbox en HTML segun nombre de salon
-    //if salon = salon1 -> return mesas en salon 1
-    //etc.
-    this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerHTML);
+    
+    this.formArray.clear();
+
+    this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
+    console.log(this.mesasSalon);
+
+    // const formArray: FormArray = this.form.get('numerosdemesas') as FormArray
+    
+    this.formArray = this.form.get('numerosdemesas') as FormArray;
+    for( let mesa of this.mesasSalon ){
+      this.formArray.push( new FormControl( false ) )
+      
+      console.log('cada mesa dentro del array de mesas' + mesa.numero);
+      //console.log('dentro del for' + this.formArray[mesa.numero]);
+    }
+
+    console.log(this.formArray);// [object object] -> me esta convirtiendo objeto en string?
+    
+
+    //console.log('posicion 0 en formArray' + formArray[]);
+    
+    
+    console.log(this.form);
+    
   }
 
 
