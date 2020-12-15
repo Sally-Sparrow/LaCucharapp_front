@@ -57,12 +57,13 @@
                     </div>
                 </div>
                 <!-- fin nav. espacios - mesas -->
-                <div class="checkboxes"formArrayName="numerosdemesas" >
+                <div class="checkboxes" >
                     <!-- ngFor en funcion del numero de mesas del espacio -->
-                    <div class="mesa" *ngFor="let control of formArray; let i = index">
-                        <input type="checkbox" >
-                        <label [for]=""></label> 
+                    <div class="mesa" formArrayName="numerosdemesas" *ngFor="let mesa of numerosdemesasFormArray.controls; let i = index">
+                        <label>
+                        <input type="checkbox" [formControlName]="i">
                         <span>Mesa {{mesasSalon[i].numero}}</span>
+                        </label>
                     </div>
 
                 </div>

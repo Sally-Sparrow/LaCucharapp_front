@@ -187,18 +187,20 @@ form div button:hover{
 
 /* CHECKBOX MESAS */
 [type="checkbox"] {
-    display: none;
+    visibility: hidden;
 }
-.form form .mesas>div div span{
+.form form .mesas .checkboxes .mesa span{
     color: var(--blanco);
     margin-left: 16px;
 }
-label:before {
+.mesa label:before {
     content: ' ';
     border: solid 1px var(--blanco);
     width: 0.8em;
     height: 0.8em;
     position: absolute;
+    /* top: 0;
+    left: 0; */
 }
 
 [type="checkbox"]:checked + label:before {

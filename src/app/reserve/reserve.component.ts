@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Mesas } from '../interfaces/mesas.interface';
 import { ReservasService } from '../services/reserva.service';
 //import { CommonModule } from '@angular/common';
@@ -20,12 +20,16 @@ export class ReserveComponent implements OnInit {
   mostrarMesas: boolean;
   mesasSalon: Mesas[];
 
-  //!@ViewChild('selectHora') selectHora: ElementRef;
+  //esto es un getter en ts
+  get numerosdemesasFormArray() {
 
-  constructor( private reservasService: ReservasService ) 
+    return this.form.controls.numerosdemesas as FormArray;
+  }
+
+  constructor( private reservasService: ReservasService,
+               private formBuilder: FormBuilder ) 
   {
-
-    this.form = new FormGroup({
+    this.form = this.formBuilder.group({
       nombre: new FormControl('', [
         Validators.required
       ]),
@@ -47,6 +51,7 @@ export class ReserveComponent implements OnInit {
 
       nota: new FormControl,
     });
+
 
     this.mesasSalon = [];
     
@@ -74,29 +79,15 @@ export class ReserveComponent implements OnInit {
   }
   //* 
   async getMesasSalones($event){
-    
-    this.formArray.clear();
 
     this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
     console.log(this.mesasSalon);
-
-    // const formArray: FormArray = this.form.get('numerosdemesas') as FormArray
     
-    this.formArray = this.form.get('numerosdemesas') as FormArray;
-    for( let mesa of this.mesasSalon ){
-      this.formArray.push( new FormControl( false ) )
-      
-      console.log('cada mesa dentro del array de mesas' + mesa.numero);
-      //console.log('dentro del for' + this.formArray[mesa.numero]);
-    }
-
-    console.log(this.formArray);// [object object] -> me esta convirtiendo objeto en string?
+    this.numerosdemesasFormArray.clear();
+    this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false)));
     
 
-    //console.log('posicion 0 en formArray' + formArray[]);
     
-    
-    console.log(this.form);
     
   }
 
