@@ -17,14 +17,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let reserva of reservasDelDia">
-                <td>{{reserva.hora.hora_inicio | date: 'HH:mm'}}</td>
+                <td>{{reserva.hora_inicio }}</td>
                 <td>{{reserva.cliente.nombre+' '}}{{reserva.cliente.apellidos}}</td>
                 <td> 
-                    <span *ngFor="let mesa of reserva.mesas; let i = index; let first = first">
+                    {{reserva.mesas}}
+                    <!--! si mesas viene en array de integers:  -->
+                    <!-- <span *ngFor="let mesa of reserva.mesas; let i = index; let first = first">
                         <span *ngIf = "first" >{{mesa}}</span>
                         <span *ngIf = "!first">, {{mesa}} </span>
-                        <!-- ! parece que ahora si, echale un ojo anyways -->
-                    </span>
+                    </span> -->
                 </td>
                 <td>{{reserva.cliente.telefono}}</td>
                 <td>{{reserva.pax}}</td>

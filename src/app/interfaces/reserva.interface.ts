@@ -1,20 +1,15 @@
 import { Time } from '@angular/common';
 
 export interface Reserva{
-    idreservas: number;
-    fk_clientes: number;
-    fk_servicios: number;
-    fk_mesas: string;
-    hora: {
-        hora_inicio: Time;
-    }
+    fecha: Date;
+    hora_inicio: Time;
+    pax: string;
+    notas: string;
+    mesas: string;
     cliente: {
         nombre: string;
         apellidos: string;
         telefono: number;
-        email?: string;
+        email: string;
     }
-    mesas: number[];
-    pax: number;
-    notas?: string;
 }
