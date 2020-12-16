@@ -26,6 +26,7 @@
 <!-- nav. páginas de book si está activa la ruta BOOK-->
 <div *ngIf="mostrarBook" class="bookNav">
     <button value="menosDia" (click)="getDesplazamientoConsulta($event)" ><i class="fas fa-caret-left"></i></button>
+        <!-- Me cago en tu puta madre -->
         {{ fechaConsulta | date: 'dd . MMMM . yyyy' }}
     <button value="masDia" (click)="getDesplazamientoConsulta($event)" > <i class="fas fa-caret-left"></i> </button>
 </div>

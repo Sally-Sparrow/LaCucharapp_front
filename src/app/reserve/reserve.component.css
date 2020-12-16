@@ -187,26 +187,23 @@ form div button:hover{
 
 /* CHECKBOX MESAS */
 [type="checkbox"] {
-    visibility: hidden;
+    display: none;
 }
 .form form .mesas .checkboxes .mesa span{
     color: var(--blanco);
     margin-left: 16px;
 }
-.mesa label:before {
+label:before {
     content: ' ';
     border: solid 1px var(--blanco);
     width: 0.8em;
     height: 0.8em;
     position: absolute;
-    /* top: 0;
-    left: 0; */
 }
-
-[type="checkbox"]:checked + label:before {
-    color: var(--blanco);
-    border-color: var(--blanco) ;
-    content: '\f00c';
+[type="checkbox"]:checked + label::before {
+    color: chartreuse;
+    border-color: chartreuse ;
+    content: '\f560';
     font-family: 'Font Awesome\ 5 Free';
     font-weight: 900;
 }

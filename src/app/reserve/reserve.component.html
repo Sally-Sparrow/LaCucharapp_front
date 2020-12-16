@@ -61,8 +61,8 @@
                     <!-- ngFor en funcion del numero de mesas del espacio -->
                     <div class="mesa" formArrayName="numerosdemesas" *ngFor="let mesa of numerosdemesasFormArray.controls; let i = index">
                         <label>
-                        <input type="checkbox" [formControlName]="i">
-                        <span>Mesa {{mesasSalon[i].numero}}</span>
+                            <input type="checkbox" [formControlName]="i">
+                            <span>Mesa {{mesasSalon[i].numero}}</span>
                         </label>
                     </div>
 

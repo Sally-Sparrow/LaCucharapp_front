@@ -85,8 +85,7 @@ export class NavComponent implements OnInit {
     }else{}
     this.fechaConsulta = this.getFecha();
     this.router.navigate(['/home/book', this.fechaConsulta]);
-    //habria que forzar aqui la recarga de la url, o navegar aqui en lugar de con un routerlink??
-    //!! hay un descuadre entre el click en el boton y la recarga de la url, cambia la variable fecha que se muestra, y al siguiente, envia url
+
   }
 
 
