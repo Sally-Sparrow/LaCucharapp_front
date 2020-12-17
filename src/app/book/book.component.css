@@ -5,11 +5,12 @@
   color: var(--negro);
   font-family: var(--fuente);
   font-weight: 100;
+  position: relative;
 }
 
 
 
-/* ---- Block ---- */
+/* ---- Cabecera Block ---- */
 .block{
   height: 40px;
   background-color: var(--color-contraste);
@@ -50,7 +51,7 @@ table {
 
 
 
-/* ---- cabecera ---- */
+/* ---- cabecera de la tabla ---- */
 table thead{
   text-transform: uppercase;
   font-size: 20px;
@@ -69,7 +70,7 @@ table thead th:last-of-type{
   border-right: none;
 }
 
-/* ---- body ---- */
+/* ---- body de la tabla ---- */
 table tbody{
   letter-spacing: 1px;
 }
@@ -113,7 +114,7 @@ table td:first-child{
 
 
 
-/* ----- cebra ---- */
+/* ----- cebra de la tabla ---- */
 table tr:nth-child(even) {
   background-color: var(--blanco);
 }
@@ -122,21 +123,14 @@ table tr:nth-child(odd) {
 }
 
 
-/* ---- Botón editar ---- */
-/* .pen{
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: var(--color-contraste);
-  color: var(--blanco);
-  position: relative;
-} */
+
+/* ---- Botón editar reserva ---- */
+.pen{
+  background: none;
+  border: none;
+  margin-left: -28px;
+}
 .pen i{
-  /* position: absolute;
-  left: 8px;
-  top: 6px; */
   color: var(--color-contraste);
   font-size: 24px;
 }
@@ -144,4 +138,15 @@ table tr:nth-child(odd) {
   cursor: pointer;
 }
 
- 
+
+/* ---- Formulario editar reserva ---- */
+.book .formularioEditarReserva{
+  position: absolute;
+  width: 80%;
+  height: 500px;
+  background-color: var(--gris);
+  border: 2px solid var(--color-contraste);
+  border-radius: 20px;
+  top: -40px;
+  left: 10%;
+}

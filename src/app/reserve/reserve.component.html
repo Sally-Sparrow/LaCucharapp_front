@@ -1,37 +1,58 @@
 <div class="form" [ngSwitch]="pasoFormulario">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <form [formGroup]="form">
         <!-- * VISTA DATOS DEL CLIENTE -->
         <div class="datos-cliente" *ngSwitchCase="1">
             <p>Datos del cliente<span><i class="fas fa-user-edit"></i></span></p>
+            <!-- nombre -->
+            <small *ngIf="form.get('nombre').hasError('required') && form.get('nombre').touched">
+                Por favor, introduce un nombre
+            </small>
             <input type="text" formControlName="nombre" placeholder="Nombre">
+            <!-- apellidos -->
             <input type="text" formControlName="apellidos" placeholder="Apellidos">
+            <!-- teléfono -->
+            <small *ngIf="form.get('telefono').hasError('required') && form.get('telefono').touched">
+                Por favor, introduce un número de teléfono
+            </small>
+            <small *ngIf="form.get('telefono').hasError('pattern') && form.get('telefono').touched">
+                El teléfono debe tener un formato correcto
+            </small>
             <input type="text" formControlName="telefono" placeholder="Teléfono">
+            <!-- email -->
             <input type="text" formControlName="email" placeholder="Email">
-            <button id="next" (click)="onClickNext()">Fecha y Hora</button>
+            <!-- botón next -->
+            <button id="next" (click)="onClickNext()" [disabled]="form.get('nombre').hasError('required') || form.get('apellidos').hasError('required') || form.get('telefono').hasError('required')">Fecha y Hora</button>
         </div>
         <!-- * VISTA DATOS DE LA RESERVA -->
         <div class="datos-reserva" *ngSwitchCase="2" [ngClass]="{'reserva-con-mesas': false}">
             <p>Datos de la reserva<span><i class="fas fa-utensils"></i></span></p>
-            <!-- ! ñapaaa !! -->
+            <!-- fecha -->
+            <small *ngIf="form.get('fecha').hasError('required') && form.get('fecha').touched">
+                Por favor, escoge una fecha
+            </small>
             <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
+            <!-- hora -->
+            <small *ngIf="form.get('hora').hasError('required') && form.get('hora').touched">
+                Por favor, selecciona una hora
+            </small>
             <div class="select">
-                <select formControlName="servicios" id="selectHora">
-                    <option disabled [selected]="true" value="0">Hora</option>
-                    <optgroup class="form-control" label="Turno Comida">
-                        <option value="turno_comida1">13:00</option>
-                        <option value="turno_comida2">13:30</option>
-                        <option value="turno_comida3">14:00</option>
-                        <option value="turno_comida4">14:30</option>
-                        <option value="turno_comida5">15:00</option>
-                        <option value="turno_comida6">15:30</option>
+                <select formControlName="hora" id="selectHora">
+                    <option disabled [selected]="true" >Hora</option>
+                    <optgroup class="form-control" label="Comida">
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
                     </optgroup>
-                    <optgroup class="form-control" label="Turno Cena">
-                        <option value="turno_cena1">20:30</option>
-                        <option value="turno_cena2">21:00</option>
-                        <option value="turno_cena3">21:30</option>
-                        <option value="turno_cena4">22:00</option>
-                        <option value="turno_cena5">22:30</option>
-                        <option value="turno_cena6">23:00</option>
+                    <optgroup class="form-control" label="Cena">
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                        <option value="22:30">22:30</option>
+                        <option value="23:00">23:00</option>
                     </optgroup>
                 </select>
                 <span class="flechadesplegable"></span>
@@ -39,13 +60,13 @@
             <input id="pax" type="text" min="1" formControlName="personas" placeholder="Comensales">
             <div class="select">
                 <select formControlName="salon">
-                    <option disabled selected="selected">Salón</option>
+                    <option disabled [selected]="true">Salón</option>
                     <option value="interior">Interior</option>
                     <option value="exterior">Exterior</option>
                 </select>
                 <span class="flechadesplegable"></span>
             </div>
-            <button id="verMesas" (click)="onClickVerMesas()">Ver mesas</button>
+            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required')">Ver mesas</button>
             </div>
             <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}"> 
                 <p>Mesas</p>
@@ -60,17 +81,16 @@
                 <div class="checkboxes" >
                     <!-- ngFor en funcion del numero de mesas del espacio -->
                     <div class="mesa" formArrayName="numerosdemesas" *ngFor="let mesa of numerosdemesasFormArray.controls; let i = index">
-                        <label>
-                            <input type="checkbox" [formControlName]="i">
-                            <span>Mesa {{mesasSalon[i].numero}}</span>
-                        </label>
+                        <input id="mesa{{i}}" type="checkbox" [formControlName]="i">
+                        <label for="mesa{{i}}"> Mesa {{mesasSalon[i].numero}}</label>
+  
                     </div>
 
                 </div>
                 <div class="notas">
                     <textarea formControlName="nota" placeholder="Notas">  </textarea>
                 </div>
-                <button id="reservar">Reservar</button>
+                <button id="reservar" (click)="onSubmit()">Reservar</button>
             </div>
         
     </form>

@@ -20,9 +20,10 @@ export class ReserveComponent implements OnInit {
   mostrarMesas: boolean;
   mesasSalon: Mesas[];
 
+  mesasSeleccionadas: Mesas[];
+
   //esto es un getter en ts
   get numerosdemesasFormArray() {
-
     return this.form.controls.numerosdemesas as FormArray;
   }
 
@@ -31,25 +32,34 @@ export class ReserveComponent implements OnInit {
   {
     this.form = this.formBuilder.group({
       nombre: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(45)
       ]),
-      apellidos: new FormControl(''),
-      telefono: new FormControl(''),
+      apellidos: new FormControl('', [
+        Validators.maxLength(45)
+      ]),
+      telefono: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/)
+      ]),
       email: new FormControl(''),
       fecha: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
       personas: new FormControl('', [
         Validators.required
       ]),
-      servicios: new FormControl,
-      turno_comida: new FormControl,
-      turno_cena: new FormControl,
+      hora: new FormControl('', [
+        Validators.required
+      ]),
       salon: new FormControl,
 
       numerosdemesas: new FormArray([]),
 
-      nota: new FormControl,
+      nota: new FormControl('', [
+        Validators.maxLength(200)
+      ]),
     });
 
 
@@ -77,7 +87,7 @@ export class ReserveComponent implements OnInit {
   getNombresSalones(){
     return ['inside', 'outside'];  //!supongamos que viene de la bbdd
   }
-  //* 
+  //* Recuperar el número de mesas en cada salón para iterar checkbox mesas
   async getMesasSalones($event){
 
     this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
@@ -85,16 +95,30 @@ export class ReserveComponent implements OnInit {
     
     this.numerosdemesasFormArray.clear();
     this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false)));
-    
-
-    
-    
+     
   }
 
-
+  // ENVIAR DATOS DEL FORMULARIO
   onSubmit() {
+    
+    //Recupera en un array las Mesas[] de las mesas seleccionadas
+    this.mesasSeleccionadas = [];
+    for( let i = 0; i < this.form.controls.numerosdemesas.value.length; i++ ){
+      if( this.form.controls.numerosdemesas.value[i] ){
+        this.mesasSeleccionadas.push(this.mesasSalon[i]);
+      }
+    }
 
-    console.log(this.form.value);
+    //prepara los datos que se enviaran al back
+    delete this.form.value["numerosdemesas"];
+    this.form.value.mesas = this.mesasSeleccionadas;
+
+    console.log( this.form.value );
+
+    this.reservasService.createReserva( this.form.value )
+    .then( response => { console.log(response) })
+    .catch( error => { console.log(error) })
+      
     this.form.reset();
   }
 

@@ -36,6 +36,12 @@ form div p span{
     margin-left: 100px;
     font-size: 50px;
 }
+form small{
+    color: var(--color-contraste);
+    font-size: 11px;
+    font-weight: 400;
+    margin-left: 40px;
+}
 
 
 /* Input */
@@ -120,6 +126,10 @@ form div button:hover{
     border: 2px solid var(--color-contraste);
 }
 
+form div button[disabled=""]{
+    color: var(--gris);
+}
+
 
 /**----  DATOS CLIENTE  ---- */
 
@@ -189,9 +199,9 @@ form div button:hover{
 [type="checkbox"] {
     display: none;
 }
-.form form .mesas .checkboxes .mesa span{
+.form form .mesas .checkboxes .mesa label{
     color: var(--blanco);
-    margin-left: 16px;
+    /* margin-left: 16px; */
 }
 label:before {
     content: ' ';
@@ -199,11 +209,12 @@ label:before {
     width: 0.8em;
     height: 0.8em;
     position: absolute;
+    margin-left: -16px;
 }
 [type="checkbox"]:checked + label::before {
-    color: chartreuse;
-    border-color: chartreuse ;
-    content: '\f560';
+    color: var(--blanco);
+    border-color: var(--blanco);
+    content: '\f00c';
     font-family: 'Font Awesome\ 5 Free';
     font-weight: 900;
 }

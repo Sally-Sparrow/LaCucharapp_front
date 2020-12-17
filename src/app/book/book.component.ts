@@ -16,6 +16,8 @@ export class BookComponent implements OnInit {
   fechaAnterior: string;
   fechaPosterior: string;
 
+  editForm: boolean;
+
   constructor( 
     private reservaService: ReservasService,
     private activatedRoute: ActivatedRoute
@@ -31,6 +33,15 @@ export class BookComponent implements OnInit {
       this.reservasDelDia = await this.reservaService.getReservaByFecha( this.fechaDelDia );
       console.log( this.reservasDelDia );
     });
+
+    this.editForm = false;
+  }
+
+  //Botón editar reserva
+  onClickEditarReserva(idReserva){
+    console.log(idReserva);
+    this.editForm = !this.editForm;
+    
   }
 
   

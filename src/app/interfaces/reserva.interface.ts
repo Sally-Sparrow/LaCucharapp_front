@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 
 export interface Reserva{
+    id: number;
     fecha: Date;
     hora_inicio: Time;
     pax: string;

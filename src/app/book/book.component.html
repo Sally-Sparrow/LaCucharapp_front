@@ -30,9 +30,13 @@
                 <td>{{reserva.cliente.telefono}}</td>
                 <td>{{reserva.pax}}</td>
                 <td>{{reserva.notas}}</td>
-                <td><div class="pen"><i class="fas fa-pen"></i></div></td>
+                <td><button class="pen" (click)="onClickEditarReserva(reserva.id)"><i class="fas fa-pen"></i></button></td>
             </tr>
         </tbody>
     </table>
+
+    <div class="formularioEditarReserva" *ngIf="editForm">
+        
+    </div>
     
 </div>
