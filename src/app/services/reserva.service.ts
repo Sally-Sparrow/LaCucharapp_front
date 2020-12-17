@@ -28,7 +28,7 @@ export class ReservasService {
   }
 
   createReserva( pFormValues ): Promise<Reserva>{
-      return this.httpClient.post<Reserva>(`${this.baseUrl}/reserve/new`, pFormValues).toPromise();
+      return this.httpClient.post<Reserva>(`${this.baseUrl}/reserve/nueva`, pFormValues).toPromise();
   }
 
 
