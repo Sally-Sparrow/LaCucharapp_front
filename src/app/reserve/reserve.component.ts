@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Mesas } from '../interfaces/mesas.interface';
 import { ReservasService } from '../services/reserva.service';
-//import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reserve',
@@ -14,7 +13,7 @@ export class ReserveComponent implements OnInit {
   form: FormGroup;
   pasoFormulario: number;
 
-  formArray: FormArray; 
+  formArray: FormArray;
 
   nombresSalones: string[];
   mostrarMesas: boolean;
@@ -27,9 +26,8 @@ export class ReserveComponent implements OnInit {
     return this.form.controls.numerosdemesas as FormArray;
   }
 
-  constructor( private reservasService: ReservasService,
-               private formBuilder: FormBuilder ) 
-  {
+  constructor(private reservasService: ReservasService,
+    private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       nombre: new FormControl('', [
         Validators.required,
@@ -42,10 +40,11 @@ export class ReserveComponent implements OnInit {
         Validators.required,
         Validators.pattern(/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/)
       ]),
-      email: new FormControl(''),
+      email: new FormControl('', [
+        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+      ]),
       fecha: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
       personas: new FormControl('', [
         Validators.required
@@ -64,7 +63,7 @@ export class ReserveComponent implements OnInit {
 
 
     this.mesasSalon = [];
-    
+
   }
 
   ngOnInit(): void {
@@ -74,37 +73,37 @@ export class ReserveComponent implements OnInit {
   }
 
   //Cambiar vistas formulario
-  onClickNext(){
-    this.pasoFormulario = 2; 
+  onClickNext() {
+    this.pasoFormulario = 2;
   }
 
-  onClickVerMesas(){
+  onClickVerMesas() {
     this.mostrarMesas = !this.mostrarMesas;
   }
 
   //? MESAS -------------------------------------------------------
   //* Pedir el numero de salones y sus nombres al servicio
-  getNombresSalones(){
+  getNombresSalones() {
     return ['inside', 'outside'];  //!supongamos que viene de la bbdd
   }
   //* Recuperar el número de mesas en cada salón para iterar checkbox mesas
-  async getMesasSalones($event){
+  async getMesasSalones($event) {
 
     this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
     console.log(this.mesasSalon);
-    
+
     this.numerosdemesasFormArray.clear();
     this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false)));
-     
+
   }
 
   // ENVIAR DATOS DEL FORMULARIO
   onSubmit() {
-    
+
     //Recupera en un array las Mesas[] de las mesas seleccionadas
     this.mesasSeleccionadas = [];
-    for( let i = 0; i < this.form.controls.numerosdemesas.value.length; i++ ){
-      if( this.form.controls.numerosdemesas.value[i] ){
+    for (let i = 0; i < this.form.controls.numerosdemesas.value.length; i++) {
+      if (this.form.controls.numerosdemesas.value[i]) {
         this.mesasSeleccionadas.push(this.mesasSalon[i]);
       }
     }
@@ -113,12 +112,12 @@ export class ReserveComponent implements OnInit {
     delete this.form.value["numerosdemesas"];
     this.form.value.mesas = this.mesasSeleccionadas;
 
-    console.log( this.form.value );
+    console.log(this.form.value);
 
-    this.reservasService.createReserva( this.form.value )
-    .then( response => { console.log(response) })
-    .catch( error => { console.log(error) })
-      
+    this.reservasService.createReserva(this.form.value)
+      .then(response => { console.log(response) })
+      .catch(error => { console.log(error) })
+
     this.form.reset();
   }
 

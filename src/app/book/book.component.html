@@ -19,7 +19,7 @@
             <tr *ngFor="let reserva of reservasDelDia">
                 <td>{{reserva.hora_inicio }}</td>
                 <td>{{reserva.cliente.nombre+' '}}{{reserva.cliente.apellidos}}</td>
-                <td> 
+                <td>
                     {{reserva.mesas}}
                     <!--! si mesas viene en array de integers:  -->
                     <!-- <span *ngFor="let mesa of reserva.mesas; let i = index; let first = first">
@@ -30,13 +30,14 @@
                 <td>{{reserva.cliente.telefono}}</td>
                 <td>{{reserva.pax}}</td>
                 <td>{{reserva.notas}}</td>
-                <td><button class="pen" (click)="onClickEditarReserva(reserva.id)"><i class="fas fa-pen"></i></button></td>
+                <td><button class="pen" (click)="onClickEditarReserva(reserva.id)"><i class="fas fa-pen"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>
 
     <div class="formularioEditarReserva" *ngIf="editForm">
-        
+        <app-edit-form></app-edit-form>
     </div>
-    
+
 </div>

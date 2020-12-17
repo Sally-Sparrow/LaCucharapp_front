@@ -13,6 +13,7 @@ import { BookComponent } from './book/book.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavComponent,
     MapComponent,
     BookComponent,
-    ReserveComponent
+    ReserveComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,
