@@ -13,23 +13,25 @@ export class ReservasService {
 
   private baseUrl: string;
 
-  constructor( private httpClient: HttpClient ) {
+  constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000/api';
 
   }
 
 
-  getMesasByEspacio( pEspacio ): Promise<Mesas[]>{ //!este modelo tendra mas datos
-    return this.httpClient.get<Mesas[]>(`${this.baseUrl}/map/${pEspacio}`).toPromise();  
+  getMesasByEspacio(pEspacio): Promise<Mesas[]> { //!este modelo tendra mas datos
+    return this.httpClient.get<Mesas[]>(`${this.baseUrl}/map/${pEspacio}`).toPromise();
   }
 
-  getReservaByFecha( pFecha ): Promise<Reserva[]>{
+  getReservaByFecha(pFecha): Promise<Reserva[]> {
     return this.httpClient.get<Reserva[]>(`${this.baseUrl}/book/${pFecha}`).toPromise();
   }
 
-  createReserva( pFormValues ): Promise<Reserva>{
-      return this.httpClient.post<Reserva>(`${this.baseUrl}/reserve/new`, pFormValues).toPromise();
+  createReserva(pFormValues): Promise<Reserva> {
+    return this.httpClient.post<Reserva>(`${this.baseUrl}/reserve/new`, pFormValues).toPromise();
   }
 
-
+  getReservaById(pId): Promise<Reserva> {
+    return this.httpClient.get<Reserva>(`${this.baseUrl}/book/edit/${pId}`).toPromise();
+  }
 }

@@ -1,6 +1,6 @@
 <form method="POST" [formGroup]="editForm">
     <div class="datos_cliente">
-        <input type="text" formControlName="nombre" placeholder="Nombre">
+        <input type="text" formControlName="nombre" [placeholder]="reservaEditar.cliente.nombre">
 
         <input type="text" formControlName="apellidos" placeholder="Apellidos">
 

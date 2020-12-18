@@ -30,14 +30,15 @@
                 <td>{{reserva.cliente.telefono}}</td>
                 <td>{{reserva.pax}}</td>
                 <td>{{reserva.notas}}</td>
-                <td><button class="pen" (click)="onClickEditarReserva(reserva.id)"><i class="fas fa-pen"></i></button>
+                <td><button class="pen" [routerLink]="['/home/book/edit',reserva.id]"><i
+                            class="fas fa-pen"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 
     <div class="formularioEditarReserva" *ngIf="editForm">
-        <app-edit-form></app-edit-form>
+        <router-outlet></router-outlet>
     </div>
 
 </div>

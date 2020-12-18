@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Mesas } from '../interfaces/mesas.interface';
 import { Reserva } from '../interfaces/reserva.interface';
 import { ReservasService } from '../services/reserva.service';
@@ -19,15 +20,18 @@ export class EditFormComponent implements OnInit {
     mostrarMesas: boolean;
     mesasSalon: Mesas[];
     mesasSeleccionadas: Mesas[];
+    reservaEditar: Reserva;
+    @Output() reserva: Reserva;
 
-    @Input() reserva: Reserva;
+
 
     //esto es un getter en ts
     get numerosdemesasFormArray() {
         return this.editForm.controls.numerosdemesas as FormArray;
     }
     constructor(private reservasService: ReservasService,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute) {
         this.editForm = this.formBuilder.group({
             nombre: new FormControl('', [
                 Validators.required,
@@ -65,9 +69,18 @@ export class EditFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.activatedRoute.params.subscribe(async params => {
+            this.reservaEditar = await this.reservasService.getReservaById(params.id);
+            console.log(this.reservaEditar);
+            //  console.log(this.reservaEditar.cliente.nombre);
+
+
+        })
+
         this.pasoFormulario = 1;
         this.mostrarMesas = false;
         this.nombresSalones = this.getNombresSalones();
+
     }
 
     getNombresSalones() {
@@ -84,8 +97,11 @@ export class EditFormComponent implements OnInit {
 
     }
     onSubmit() {
-        console.log(this.editForm);
+        console.log();
+
     }
+
+
 }
 
 
