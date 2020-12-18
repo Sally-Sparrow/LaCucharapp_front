@@ -1,37 +1,40 @@
-<form [formGroup]="editForm">
-    <input type="text" formControlName="nombre" placeholder="Nombre">
+<form method="POST" [formGroup]="editForm">
+    <div class="datos_cliente">
+        <input type="text" formControlName="nombre" placeholder="Nombre">
 
-    <input type="text" formControlName="apellidos" placeholder="Apellidos">
+        <input type="text" formControlName="apellidos" placeholder="Apellidos">
 
-    <input type="text" formControlName="telefono" placeholder="Teléfono">
+        <input type="tel" formControlName="telefono" placeholder="Teléfono">
 
-    <input type="text" formControlName="email" placeholder="Email">
+        <input type="number" formControlName="personas" placeholder="Pax">
+    </div>
+    <div class="datos_reserva">
+        <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
 
-    <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
-
-    <select formControlName="hora" id="selectHora">
-        <option disabled [selected]="true">Hora</option>
-        <optgroup class="form-control" label="Comida">
-            <option value="13:00">13:00</option>
-            <option value="13:30">13:30</option>
-            <option value="14:00">14:00</option>
-            <option value="14:30">14:30</option>
-            <option value="15:00">15:00</option>
-            <option value="15:30">15:30</option>
-        </optgroup>
-        <optgroup class="form-control" label="Cena">
-            <option value="20:30">20:30</option>
-            <option value="21:00">21:00</option>
-            <option value="21:30">21:30</option>
-            <option value="22:00">22:00</option>
-            <option value="22:30">22:30</option>
-            <option value="23:00">23:00</option>
-        </optgroup>
-    </select>
-
+        <select formControlName="hora" id="selectHora">
+            <option disabled [selected]="true">Hora</option>
+            <optgroup class="form-control" label="Comida">
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+            </optgroup>
+            <optgroup class="form-control" label="Cena">
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+                <option value="22:30">22:30</option>
+                <option value="23:00">23:00</option>
+            </optgroup>
+        </select>
+        <div class="notas">
+            <textarea formControlName="nota" placeholder="Nota"></textarea>
+        </div>
+    </div>
     <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}">
-        <p>Mesas</p>
-        <!--TODO iterables, dependiendo del nºmesas  -->
         <!-- nav. espacios - mesas-->
         <div class="salonesNav">
             <div class="menumap">
@@ -50,9 +53,7 @@
             </div>
 
         </div>
-        <div class="notas">
-            <textarea formControlName="nota" placeholder="Notas">  </textarea>
-        </div>
-        <button id="reservar" (click)="onSubmit()">Reservar</button>
+
+        <button id="reservar" (click)="onSubmit()">Enviar</button>
     </div>
 </form>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Mesas } from '../interfaces/mesas.interface';
+import { Reserva } from '../interfaces/reserva.interface';
 import { ReservasService } from '../services/reserva.service';
 
 
@@ -13,14 +14,13 @@ import { ReservasService } from '../services/reserva.service';
 export class EditFormComponent implements OnInit {
     editForm: FormGroup;
     pasoFormulario: number;
-
     formArray: FormArray;
-
     nombresSalones: string[];
     mostrarMesas: boolean;
     mesasSalon: Mesas[];
-
     mesasSeleccionadas: Mesas[];
+
+    @Input() reserva: Reserva;
 
     //esto es un getter en ts
     get numerosdemesasFormArray() {
@@ -84,26 +84,7 @@ export class EditFormComponent implements OnInit {
 
     }
     onSubmit() {
-
-        //Recupera en un array las Mesas[] de las mesas seleccionadas
-        this.mesasSeleccionadas = [];
-        for (let i = 0; i < this.editForm.controls.numerosdemesas.value.length; i++) {
-            if (this.editForm.controls.numerosdemesas.value[i]) {
-                this.mesasSeleccionadas.push(this.mesasSalon[i]);
-            }
-        }
-
-        //prepara los datos que se enviaran al back
-        delete this.editForm.value["numerosdemesas"];
-        this.editForm.value.mesas = this.mesasSeleccionadas;
-
-        console.log(this.editForm.value);
-
-        this.reservasService.createReserva(this.editForm.value)
-            .then(response => { console.log(response) })
-            .catch(error => { console.log(error) })
-
-        this.editForm.reset();
+        console.log(this.editForm);
     }
 }
 
