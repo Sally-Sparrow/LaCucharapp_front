@@ -3,14 +3,14 @@
     <div class="container">
         
         <div class="mapone" >
-            <div class="reloj">
+            <div class="reloj" ng-controller='TimeCtrl'>
                 <span>
                     <!-- <i class="far fa-calendar-times"></i> -->
                     {{fechaHora | date: 'MMM d'}}
                 </span>
                 <span>
                     <i class="far fa-clock"></i>
-                    {{fechaHora | date: 'HH:mm'}}
+                    {{fechaHora | date: 'HH:mm:ss'}}
                 </span>
             </div>
             <div class="mesas">

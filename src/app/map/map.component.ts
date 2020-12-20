@@ -31,8 +31,15 @@ export class MapComponent implements OnInit {
       console.log( this.mesasSalon );
     });
     //* pinta la fecha y la hora del día
-    this.fechaHora = new Date();
+    setInterval( () => {
+      this.fechaHora = new Date();
+    }, 1000 )
+    
+    
   }
+
+  
+
 
 }
 
