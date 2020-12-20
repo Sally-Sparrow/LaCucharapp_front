@@ -223,9 +223,14 @@ label:before {
     font-family: 'Font Awesome\ 5 Free';
     font-weight: 900;
 }
-/* !nada, ni puto caso */
-input[type=checkbox][disabled]{
-    color: chartreuse;
+/** checkbox disabled */
+input[type="checkbox"]:disabled + label::before{
+    background: var(--gris);
+    color: var(--gris);
+    border: 1px solid var(--grey);
+}
+input[type="checkbox"]:disabled + label:hover::before{
+    cursor: not-allowed;
 }
 
 

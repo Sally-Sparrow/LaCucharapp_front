@@ -21,13 +21,13 @@ export class ReserveComponent implements OnInit {
   mesasSalon: Mesas[];
 
   mesasSeleccionadas: Mesas[];
-
   fechaHoraSeleccionada: {};
-
   mesasOcupadas: Mesas[];
 
+  salon: string;
+  firstTime: boolean;
 
-  //esto es un getter en ts
+  //getter para acceder a la propiedad de formBuilder
   get numerosdemesasFormArray() {
     return this.form.controls.numerosdemesas as FormArray;
   }
@@ -71,6 +71,8 @@ export class ReserveComponent implements OnInit {
     this.fechaHoraSeleccionada = new Object;
     this.mesasOcupadas = [];
 
+    this.firstTime = true;
+
   }
 
 
@@ -89,7 +91,6 @@ export class ReserveComponent implements OnInit {
   }
   onClickVerMesas(){
     this.mostrarMesas = !this.mostrarMesas;
-    // this.recuperaMesasOcupadas();
   }
 
 
@@ -99,12 +100,20 @@ export class ReserveComponent implements OnInit {
       fecha: $event.target.value
     });
     console.log(this.fechaHoraSeleccionada)
+    console.log('entra en la funcion mesas despues de fecha', this.firstTime);
+    if(!this.firstTime){
+      this.getMesasSalones(this.salon);
+    }
   }
   onChangeHora($event){
     Object.assign(this.fechaHoraSeleccionada, {
       hora: $event.target.value
     });
     console.log(this.fechaHoraSeleccionada)
+    console.log('entra en la funcion mesas despues de hora', this.firstTime);
+    if(!this.firstTime){
+      this.getMesasSalones(this.salon);
+    }
 
   }
   
@@ -117,10 +126,10 @@ export class ReserveComponent implements OnInit {
 
 
   //* Recuperar el número de mesas en cada salón, iterar formControl checkbox mesas, y desabilitar las que esten ocupadas en la fecha y hora seleccionadas:
-  async getMesasSalones($event){
+  async getMesasSalones(pEspacio){
 
     //* recupera el numero de mesas en cada espacio
-    this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
+    this.mesasSalon = await this.reservasService.getMesasByEspacio(pEspacio);
     console.log(this.mesasSalon);
 
     //* de las mesas recuperadas, pide a la bbdd las que estan ocupadas en fecha y hora seleccionadas:
@@ -141,7 +150,6 @@ export class ReserveComponent implements OnInit {
     console.log(this.mesasSalon);
     
 
-    
     //* crea un formControl para cada elemento mesa en el array de mesas recuperado
     this.numerosdemesasFormArray.clear();
     // this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false))); 
@@ -150,7 +158,10 @@ export class ReserveComponent implements OnInit {
       this.numerosdemesasFormArray.push( new FormControl ({value: false, disabled: mesa.ocupada }) );
     };
 
-    
+    //* Almacena el espacio para llamar a la funcion en on change
+    this.salon = pEspacio;
+    //* bool para saber si salon tiene valor y porder llamar a la funcion onChange fecha y hora
+    this.firstTime = false;
   }
 
 

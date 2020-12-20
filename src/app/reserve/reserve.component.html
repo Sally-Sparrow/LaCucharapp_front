@@ -80,7 +80,7 @@
                 <!-- nav. espacios - mesas-->
                 <div class="salonesNav" >
                     <div class="menumap" > 
-                    <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event)" class="seleccionado">{{salon}}</button>
+                    <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event.target.innerText)" class="seleccionado">{{salon}}</button>
                     </div>
                 </div>
                 <!-- fin nav. espacios - mesas -->
