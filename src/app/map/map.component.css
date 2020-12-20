@@ -6,6 +6,8 @@
     border: 1px solid var(--gris);
 }
 
+
+/* Fondo mapa */
 .mapone{
     margin: 10px 10px;
     background-color: var(--blanco);
@@ -13,7 +15,33 @@
     flex-wrap: wrap;
 }
 
-/* FONDO; MESAS Y SILLAS DE CADA MAPA */
+
+/** RELOJ */
+.mapone .reloj{
+    width: 100%;
+    margin-top: 20px;
+}
+.map .container .reloj{
+    display: flex;
+    justify-content: center;
+    font-family: var(--fuente);
+    font-weight: 100;
+    font-size: 20px;
+    color: var(--negro);
+}
+.map .container .reloj span i{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+/** MESAS */
+.mapone .mesas{
+    display: flex;
+    flex-wrap: wrap;
+}
+/* MODELO DE MESA CON SILLAS PARA MAPAS */
 .mapone .mesa {
     height: 100px;
     width: 100px;

@@ -1,8 +1,8 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Mesas } from '../interfaces/mesas.interface';
 import { ReservasService } from '../services/reserva.service';
-//import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reserve',
@@ -21,6 +21,11 @@ export class ReserveComponent implements OnInit {
   mesasSalon: Mesas[];
 
   mesasSeleccionadas: Mesas[];
+
+  fechaHoraSeleccionada: {};
+
+  mesasOcupadas: Mesas[];
+
 
   //esto es un getter en ts
   get numerosdemesasFormArray() {
@@ -62,10 +67,13 @@ export class ReserveComponent implements OnInit {
       ]),
     });
 
+    this.mesasSalon = []; 
+    this.fechaHoraSeleccionada = new Object;
+    this.mesasOcupadas = [];
 
-    this.mesasSalon = [];
-    
   }
+
+
 
   ngOnInit(): void {
     this.pasoFormulario = 1; //por defecto está en el paso 1: datos del cliente.
@@ -73,35 +81,83 @@ export class ReserveComponent implements OnInit {
     this.nombresSalones = this.getNombresSalones();
   }
 
-  //Cambiar vistas formulario
+
+
+  //? Cambiar vistas formulario
   onClickNext(){
     this.pasoFormulario = 2; 
   }
-
   onClickVerMesas(){
     this.mostrarMesas = !this.mostrarMesas;
+    // this.recuperaMesasOcupadas();
   }
 
-  //? MESAS -------------------------------------------------------
+
+  //* Recoger fecha y hora seleccionadas en el form, meterlas en un objeto para pasarlo como body al metodo que recupera las mesas ocupadas en esa fecha/hora
+  onChangeFecha($event){
+    Object.assign(this.fechaHoraSeleccionada, {
+      fecha: $event.target.value
+    });
+    console.log(this.fechaHoraSeleccionada)
+  }
+  onChangeHora($event){
+    Object.assign(this.fechaHoraSeleccionada, {
+      hora: $event.target.value
+    });
+    console.log(this.fechaHoraSeleccionada)
+
+  }
+  
+
+  //? MESAS: recuperar, iterar formcontrols, desactivar las ocupadas
   //* Pedir el numero de salones y sus nombres al servicio
   getNombresSalones(){
     return ['inside', 'outside'];  //!supongamos que viene de la bbdd
   }
-  //* Recuperar el número de mesas en cada salón para iterar checkbox mesas
+
+
+  //* Recuperar el número de mesas en cada salón, iterar formControl checkbox mesas, y desabilitar las que esten ocupadas en la fecha y hora seleccionadas:
   async getMesasSalones($event){
 
+    //* recupera el numero de mesas en cada espacio
     this.mesasSalon = await this.reservasService.getMesasByEspacio($event.target.innerText);
     console.log(this.mesasSalon);
+
+    //* de las mesas recuperadas, pide a la bbdd las que estan ocupadas en fecha y hora seleccionadas:
+    this.mesasOcupadas = await this.reservasService.getMesasOcupadas(this.fechaHoraSeleccionada);
+    console.log(this.mesasOcupadas);
+
+    //* recorrer el array de mesas recuperadas, compararlo con el array de mesas ocupadas y da valor a la propiedad ocupada de cada mesa
+    for(let mesa of this.mesasSalon){
+      for(let ocupada of this.mesasOcupadas){
+        if(mesa.numero === ocupada.numero){
+          mesa.ocupada = true;
+          break;
+        }else{
+          mesa.ocupada = false;
+        }
+      }
+    }
+    console.log(this.mesasSalon);
     
+
+    
+    //* crea un formControl para cada elemento mesa en el array de mesas recuperado
     this.numerosdemesasFormArray.clear();
-    this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false)));
-     
+    // this.mesasSalon.forEach(() => this.numerosdemesasFormArray.push(new FormControl(false))); 
+
+    for(let mesa of this.mesasSalon){
+      this.numerosdemesasFormArray.push( new FormControl ({value: false, disabled: mesa.ocupada }) );
+    };
+
+    
   }
 
-  // ENVIAR DATOS DEL FORMULARIO
+
+
+  //? PREPARAR Y ENVIAR DATOS DEL FORMULARIO A BBDD
   onSubmit() {
-    
-    //Recupera en un array las Mesas[] de las mesas seleccionadas
+    //*Recupera en un array los numeros de mesa de las mesas seleccionadas
     this.mesasSeleccionadas = [];
     for( let i = 0; i < this.form.controls.numerosdemesas.value.length; i++ ){
       if( this.form.controls.numerosdemesas.value[i] ){
@@ -109,7 +165,7 @@ export class ReserveComponent implements OnInit {
       }
     }
 
-    //prepara los datos que se enviaran al back
+    //*prepara los datos que se enviaran al back
     delete this.form.value["numerosdemesas"];
     this.form.value.mesas = this.mesasSeleccionadas;
 

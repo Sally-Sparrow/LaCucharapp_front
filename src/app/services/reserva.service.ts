@@ -18,13 +18,19 @@ export class ReservasService {
 
   }
 
-
+  //* PETICIONES PARA MAP
   getMesasByEspacio( pEspacio ): Promise<Mesas[]>{ //!este modelo tendra mas datos
     return this.httpClient.get<Mesas[]>(`${this.baseUrl}/map/${pEspacio}`).toPromise();  
   }
 
+  //* PETICIONES PARA BOOK
   getReservaByFecha( pFecha ): Promise<Reserva[]>{
     return this.httpClient.get<Reserva[]>(`${this.baseUrl}/book/${pFecha}`).toPromise();
+  }
+
+  //* PETICIONES PARA RESERVE (formulario)
+  getMesasOcupadas( pFechaHora ): Promise<Mesas[]>{
+    return this.httpClient.post<Mesas[]>(`${this.baseUrl}/reserve`, pFechaHora).toPromise();
   }
 
   createReserva( pFormValues ): Promise<Reserva>{
