@@ -24,7 +24,7 @@
             <!-- email -->
             <input type="text" formControlName="email" placeholder="Email">
             <!-- botón next -->
-            <button id="next" (click)="onClickNext()" [disabled]="form.get('nombre').hasError('required') || form.get('apellidos').hasError('required') || form.get('telefono').hasError('required')">Next</button>
+            <button id="next" (click)="onClickNext()" [disabled]="form.get('nombre').hasError('required') || form.get('telefono').hasError('pattern') || form.get('telefono').hasError('required')">Next</button>
         </div>
 
 
@@ -36,14 +36,14 @@
             <small *ngIf="form.get('fecha').hasError('required') && form.get('fecha').touched">
                 Por favor, escoge una fecha
             </small>
-            <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha" (change)="onChangeFecha($event)">
+            <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="* Fecha" (change)="onChangeFecha($event)">
             <!-- hora -->
             <small *ngIf="form.get('hora').hasError('required') && form.get('hora').touched">
                 Por favor, selecciona una hora
             </small>
             <div class="select">
                 <select formControlName="hora" id="selectHora" (change)="onChangeHora($event)">
-                    <option disabled [selected]="true" >Hora</option>
+                    <option disabled [selected]="true" >* Hora</option>
                     <optgroup class="form-control" label="Comida">
                         <option value="13:00:00">13:00</option>
                         <option value="13:30:00">13:30</option>
@@ -63,11 +63,16 @@
                 </select>
                 <span class="flechadesplegable"></span>
             </div>
-            <input id="pax" type="text" min="1" formControlName="personas" placeholder="Comensales">
+            <!-- comensales -->
             <small *ngIf="form.get('personas').hasError('required') && form.get('personas').touched">
                 Por favor, introduce un número de comensales
             </small>
-            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required') || form.get('personas').hasError('required')">Ver mesas</button>
+            <small *ngIf="form.get('personas').hasError('pattern') && form.get('personas').touched">
+                Debe ser un número entero
+            </small>
+            <input id="pax" type="text" min="1" formControlName="personas" placeholder="* Comensales">
+            <!-- botón para VER MESAS -->
+            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required') || form.get('personas').hasError('required') || form.get('personas').hasError('pattern')">Ver mesas</button>
             </div>
             <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}"> 
                 <p>Mesas</p>

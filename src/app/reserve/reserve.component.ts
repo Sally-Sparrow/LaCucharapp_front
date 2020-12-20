@@ -38,7 +38,8 @@ export class ReserveComponent implements OnInit {
     this.form = this.formBuilder.group({
       nombre: new FormControl('', [
         Validators.required,
-        Validators.maxLength(45)
+        Validators.minLength(3),
+        Validators.maxLength(45) //Para que no pete la bbdd
       ]),
       apellidos: new FormControl('', [
         Validators.maxLength(45)
@@ -53,7 +54,8 @@ export class ReserveComponent implements OnInit {
         Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
       personas: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^\d+$/)
       ]),
       hora: new FormControl('', [
         Validators.required
