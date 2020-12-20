@@ -64,15 +64,10 @@
                 <span class="flechadesplegable"></span>
             </div>
             <input id="pax" type="text" min="1" formControlName="personas" placeholder="Comensales">
-            <div class="select">
-                <select formControlName="salon">
-                    <option disabled [selected]="true">Salón</option>
-                    <option value="interior">Interior</option>
-                    <option value="exterior">Exterior</option>
-                </select>
-                <span class="flechadesplegable"></span>
-            </div>
-            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required')">Ver mesas</button>
+            <small *ngIf="form.get('personas').hasError('required') && form.get('personas').touched">
+                Por favor, introduce un número de comensales
+            </small>
+            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required') || form.get('personas').hasError('required')">Ver mesas</button>
             </div>
             <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}"> 
                 <p>Mesas</p>

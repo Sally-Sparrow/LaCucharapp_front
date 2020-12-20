@@ -58,7 +58,6 @@ export class ReserveComponent implements OnInit {
       hora: new FormControl('', [
         Validators.required
       ]),
-      salon: new FormControl,
 
       numerosdemesas: new FormArray([]),
 
@@ -183,8 +182,8 @@ export class ReserveComponent implements OnInit {
     console.log( this.form.value );
 
     this.reservasService.createReserva( this.form.value )
-    .then( response => { console.log(response) })
-    .catch( error => { console.log(error) })
+    .then( response => { alert( JSON.stringify(response) )})
+    .catch( error => console.log(error) );
       
     this.form.reset();
   }
