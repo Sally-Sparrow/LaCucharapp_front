@@ -1,5 +1,8 @@
 <div class="form" [ngSwitch]="pasoFormulario">
     <form [formGroup]="form">
+
+
+
         <!-- * VISTA DATOS DEL CLIENTE -->
         <div class="datos-cliente" *ngSwitchCase="1">
             <p>Datos del cliente<span><i class="fas fa-user-edit"></i></span></p>
@@ -7,7 +10,7 @@
             <small *ngIf="form.get('nombre').hasError('required') && form.get('nombre').touched">
                 Por favor, introduce un nombre
             </small>
-            <input type="text" formControlName="nombre" placeholder="Nombre">
+            <input type="text" formControlName="nombre" placeholder="* Nombre">
             <!-- apellidos -->
             <input type="text" formControlName="apellidos" placeholder="Apellidos">
             <!-- teléfono -->
@@ -17,12 +20,15 @@
             <small *ngIf="form.get('telefono').hasError('pattern') && form.get('telefono').touched">
                 El teléfono debe tener un formato correcto
             </small>
-            <input type="text" formControlName="telefono" placeholder="Teléfono">
+            <input type="text" formControlName="telefono" placeholder="* Teléfono">
             <!-- email -->
             <input type="text" formControlName="email" placeholder="Email">
             <!-- botón next -->
-            <button id="next" (click)="onClickNext()" [disabled]="form.get('nombre').hasError('required') || form.get('apellidos').hasError('required') || form.get('telefono').hasError('required')">Fecha y Hora</button>
+            <button id="next" (click)="onClickNext()" [disabled]="form.get('nombre').hasError('required') || form.get('telefono').hasError('pattern') || form.get('telefono').hasError('required')">Next</button>
         </div>
+
+
+
         <!-- * VISTA DATOS DE LA RESERVA -->
         <div class="datos-reserva" *ngSwitchCase="2" [ngClass]="{'reserva-con-mesas': false}">
             <p>Datos de la reserva<span><i class="fas fa-utensils"></i></span></p>
@@ -30,43 +36,43 @@
             <small *ngIf="form.get('fecha').hasError('required') && form.get('fecha').touched">
                 Por favor, escoge una fecha
             </small>
-            <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
+            <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="* Fecha" (change)="onChangeFecha($event)">
             <!-- hora -->
             <small *ngIf="form.get('hora').hasError('required') && form.get('hora').touched">
                 Por favor, selecciona una hora
             </small>
             <div class="select">
-                <select formControlName="hora" id="selectHora">
-                    <option disabled [selected]="true" >Hora</option>
+                <select formControlName="hora" id="selectHora" (change)="onChangeHora($event)">
+                    <option disabled [selected]="true" >* Hora</option>
                     <optgroup class="form-control" label="Comida">
-                        <option value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
+                        <option value="13:00:00">13:00</option>
+                        <option value="13:30:00">13:30</option>
+                        <option value="14:00:00">14:00</option>
+                        <option value="14:30:00">14:30</option>
+                        <option value="15:00:00">15:00</option>
+                        <option value="15:30:00">15:30</option>
                     </optgroup>
                     <optgroup class="form-control" label="Cena">
-                        <option value="20:30">20:30</option>
-                        <option value="21:00">21:00</option>
-                        <option value="21:30">21:30</option>
-                        <option value="22:00">22:00</option>
-                        <option value="22:30">22:30</option>
-                        <option value="23:00">23:00</option>
+                        <option value="20:30:00">20:30</option>
+                        <option value="21:00:00">21:00</option>
+                        <option value="21:30:00">21:30</option>
+                        <option value="22:00:00">22:00</option>
+                        <option value="22:30:00">22:30</option>
+                        <option value="23:00:00">23:00</option>
                     </optgroup>
                 </select>
                 <span class="flechadesplegable"></span>
             </div>
-            <input id="pax" type="text" min="1" formControlName="personas" placeholder="Comensales">
-            <div class="select">
-                <select formControlName="salon">
-                    <option disabled [selected]="true">Salón</option>
-                    <option value="interior">Interior</option>
-                    <option value="exterior">Exterior</option>
-                </select>
-                <span class="flechadesplegable"></span>
-            </div>
-            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required')">Ver mesas</button>
+            <!-- comensales -->
+            <small *ngIf="form.get('personas').hasError('required') && form.get('personas').touched">
+                Por favor, introduce un número de comensales
+            </small>
+            <small *ngIf="form.get('personas').hasError('pattern') && form.get('personas').touched">
+                Debe ser un número entero
+            </small>
+            <input id="pax" type="text" min="1" formControlName="personas" placeholder="* Comensales">
+            <!-- botón para VER MESAS -->
+            <button id="verMesas" (click)="onClickVerMesas()" [disabled]="form.get('fecha').hasError('required') || form.get('hora').hasError('required') || form.get('personas').hasError('required') || form.get('personas').hasError('pattern')">Ver mesas</button>
             </div>
             <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}"> 
                 <p>Mesas</p>
@@ -74,7 +80,7 @@
                 <!-- nav. espacios - mesas-->
                 <div class="salonesNav" >
                     <div class="menumap" > 
-                    <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event)" class="seleccionado">{{salon}}</button>
+                    <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event.target.innerText)" class="seleccionado">{{salon}}</button>
                     </div>
                 </div>
                 <!-- fin nav. espacios - mesas -->

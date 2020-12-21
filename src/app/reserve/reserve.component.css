@@ -128,6 +128,11 @@ form div button:hover{
 
 form div button[disabled=""]{
     color: var(--gris);
+    border: 2px dotted var(--gris);
+}
+form div button[disabled=""]:hover{
+    background-color: var(--gris);
+    color: var(--blanco);
 }
 
 
@@ -217,6 +222,15 @@ label:before {
     content: '\f00c';
     font-family: 'Font Awesome\ 5 Free';
     font-weight: 900;
+}
+/** checkbox disabled */
+input[type="checkbox"]:disabled + label::before{
+    background: var(--gris);
+    color: var(--gris);
+    border: 1px solid var(--grey);
+}
+input[type="checkbox"]:disabled + label:hover::before{
+    cursor: not-allowed;
 }
 
 

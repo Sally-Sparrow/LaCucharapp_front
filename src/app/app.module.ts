@@ -14,6 +14,7 @@ import { ReserveComponent } from './reserve/reserve.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
