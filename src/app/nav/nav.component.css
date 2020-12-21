@@ -82,7 +82,7 @@
 /* ---- nav book ---- */
 .bookNav{
     display: flex;
-    margin-top: 40px;
+    margin-top: 20px;
     background-color: var(--blanco);
     font-size: 20px;
     color: var(--negro);

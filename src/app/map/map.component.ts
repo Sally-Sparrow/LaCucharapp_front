@@ -22,6 +22,7 @@ export class MapComponent implements OnInit {
 
   fechaHoraActual: any;
   
+  minutosOcupacionMesa: number;
   ocupada: boolean;
 
   constructor( private reservasService: ReservasService,
@@ -30,6 +31,7 @@ export class MapComponent implements OnInit {
              ) 
   {
     this.fechaHoraActual = {};
+    this.minutosOcupacionMesa = 2;
   }
 
 
@@ -67,7 +69,7 @@ export class MapComponent implements OnInit {
           if(mesa.numero === ocupada.numero){
            mesa.ocupada = true;
            mesa.horaInicio = this.fechaHora;
-           mesa.horaFin = this.fechaHora.add(2, 'minute');
+           mesa.horaFin = this.fechaHora.add(this.minutosOcupacionMesa, 'minute');
            break;
           }else{
            //mesa.ocupada = false; //mira a ver esto aqui
@@ -89,12 +91,6 @@ export class MapComponent implements OnInit {
 
     
   }
-
-  onClick(){
-    this.ocupada = !this.ocupada;
-  }
-
-  
 
 
 }
