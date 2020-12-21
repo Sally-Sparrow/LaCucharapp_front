@@ -52,6 +52,10 @@
     margin: 60px;
     transform: rotateZ(45deg);
 }
+/* clase a aplicar si la mesa esta ocupada */
+.mapone .mesaocupada{
+    background-color: var(--color-contraste);
+}
 .mapone .mesa #num{
     font-size: 20px;
     color: var(--negro);

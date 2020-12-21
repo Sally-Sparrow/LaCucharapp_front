@@ -15,7 +15,7 @@
             </div>
             <div class="mesas">
             <!-- ngFor en funcion del numero de mesas del espacio -->
-                <div class="mesa" *ngFor="let mesa of mesasSalon">
+                <div class="mesa" *ngFor="let mesa of mesasSalon" [ngClass]="{'mesaocupada': mesa.ocupada}">
                     <div class="silla1"></div>
                     <div class="silla2"></div>
                     <div class="silla3"></div>
@@ -23,6 +23,7 @@
                     <div id="num">{{mesa.numero}}</div>
                 </div>
             </div>
+            <button (click)="onClick()"></button>
         </div>  
         <!-- <router-outlet> </router-outlet> -->
     </div>   
