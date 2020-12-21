@@ -71,8 +71,7 @@
   cursor: pointer;
 }
 
-/*! Arregla esto, no es un focus es una ngclass */
-.menumap>button:focus{
+.menumap>button.activo-salon{
   border-bottom: 4px solid var(--negro);
   color: crimson;
 }

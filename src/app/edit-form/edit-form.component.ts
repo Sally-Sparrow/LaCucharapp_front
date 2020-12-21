@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -15,16 +16,20 @@ export class EditFormComponent implements OnInit {
     editForm: FormGroup;
     reservaEditar: Reserva;
 
-
+    reservaId: number;
+    fecha: string;
     constructor(private reservasService: ReservasService,
         private formBuilder: FormBuilder,
-        private activatedRoute: ActivatedRoute) {
+        private activatedRoute: ActivatedRoute,
+        private datePipe: DatePipe) {
 
     }
 
     ngOnInit(): void {
         this.activatedRoute.params.subscribe(async params => {
             this.reservaEditar = await this.reservasService.getReservaById(params.id);
+            this.reservaId = params.id;
+            this.fecha = this.datePipe.transform(this.reservaEditar.fecha, "yyy-MM-dd");
             this.editForm = this.formBuilder.group({
                 nombre: new FormControl(this.reservaEditar.cliente.nombre, [
                     Validators.required,
@@ -40,7 +45,7 @@ export class EditFormComponent implements OnInit {
                 email: new FormControl(this.reservaEditar.cliente.email, [
                     Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
                 ]),
-                fecha: new FormControl(this.reservaEditar.fecha, [
+                fecha: new FormControl(this.fecha, [
                     Validators.required,
                 ]),
                 personas: new FormControl(this.reservaEditar.pax, [
@@ -62,9 +67,10 @@ export class EditFormComponent implements OnInit {
     }
 
     onSubmit() {
+        this.editForm.value.idReserva = this.reservaId;
         this.reservasService.editReserva(this.editForm.value)
             .then(response => {
-                console.log(this.editForm);
+                console.log(response);
             })
             .catch(error => console.log(error));
     }
