@@ -2,23 +2,28 @@
 form{
     display: flex;
     flex-direction: row;
-    width: 100%; 
+    justify-content: center;
+    align-items: center;
+    width: 75%; 
     margin: 0 auto;
+    height: 70vh;
 }
     
     form input{
         border: none;
         font-size: 16px;
         border-radius: 16px;
-        padding-left: 10px;
+        padding: 10px;
         margin-bottom: 20px;
+        border: 1px solid var(--color-contraste);
     }
     form .datos_cliente{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
+        height: inherit;
         flex-wrap: wrap;
-        margin:40px 40px;
+        margin:40px;
         width: 28%;
     }
 
@@ -29,12 +34,18 @@ form{
         padding: 22px;
     }
 
+    .datos_cliente p {
+        margin-bottom: 10px;
+    }
+
+    
     .datos_reserva {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
+        height: inherit;
         flex-wrap: wrap;
-        margin:40px 40px;
+        margin:40px;
         width: 28%;
     }
 
@@ -46,11 +57,10 @@ form{
     }
          
     .datos_reserva select {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         padding: 22px;
         border-radius: 16px;
+        margin-bottom: inherit;
+        border:1px solid var(--color-contraste);;
     }
 
     .notas textarea {
@@ -59,36 +69,8 @@ form{
         height: 60px;
     }
 
-    .menunav>button{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin:20px 40px;
-        width: 28%;
-    }
-
-
     
-form div button{
-    width: 35%;
-    height: 30px;
-    font-size: 18px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    border-radius: 16px;
-    align-self: center;
-    color: var(--color-contraste);
-    background-color: var(--blanco);
-    border: 2px solid var(--color-contraste);
-}
-form div button:hover{
-    cursor: pointer;
-    color: var(--blanco);
-    background-color: var(--color-contraste);
-    border: 2px solid var(--color-contraste);
-}
+
 
 
 

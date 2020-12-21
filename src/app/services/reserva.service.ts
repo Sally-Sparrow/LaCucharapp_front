@@ -34,4 +34,9 @@ export class ReservasService {
   getReservaById(pId): Promise<Reserva> {
     return this.httpClient.get<Reserva>(`${this.baseUrl}/book/edit/${pId}`).toPromise();
   }
+
+  editReserva(pFormValues): Promise<Reserva> {
+    return this.httpClient.put<Reserva>(`${this.baseUrl}/book/edit/cliente`, pFormValues).toPromise();
+  }
+
 }

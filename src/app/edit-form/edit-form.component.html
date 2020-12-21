@@ -1,16 +1,19 @@
-<form method="POST" [formGroup]="editForm">
+<form method="POST" [formGroup]="editForm " *ngIf="editForm">
     <div class="datos_cliente">
-        <input type="text" formControlName="nombre" [placeholder]="reservaEditar.cliente.nombre">
-
-        <input type="text" formControlName="apellidos" placeholder="Apellidos">
-
-        <input type="tel" formControlName="telefono" placeholder="Teléfono">
-
-        <input type="number" formControlName="personas" placeholder="Pax">
+        <p>Nombre</p>
+        <input type="text" formControlName="nombre">
+        <p>Apellidos</p>
+        <input type="text" formControlName="apellidos">
+        <p>Teléfono</p>
+        <input type="text" formControlName="telefono">
+        <p>Comensales</p>
+        <input type="text" formControlName="personas">
     </div>
     <div class="datos_reserva">
-        <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha" placeholder="Fecha">
-
+        <p>Fecha</p>
+        <input id="fecha" type="text" onfocus="(this.type='date')" formControlName="fecha">
+        <p>Mesa</p>
+        <input type="text">
         <select formControlName="hora" id="selectHora">
             <option disabled [selected]="true">Hora</option>
             <optgroup class="form-control" label="Comida">
@@ -31,29 +34,9 @@
             </optgroup>
         </select>
         <div class="notas">
-            <textarea formControlName="nota" placeholder="Nota"></textarea>
+            <p>Notas</p>
+            <textarea formControlName="nota"></textarea>
         </div>
     </div>
-    <div class="mesas" [ngClass]="{'nomesas': !mostrarMesas, 'mesas': mostrarMesas}">
-        <!-- nav. espacios - mesas-->
-        <div class="salonesNav">
-            <div class="menumap">
-                <button *ngFor="let salon of nombresSalones" (click)="getMesasSalones($event)"
-                    class="seleccionado">{{salon}}</button>
-            </div>
-        </div>
-        <!-- fin nav. espacios - mesas -->
-        <div class="checkboxes">
-            <!-- ngFor en funcion del numero de mesas del espacio -->
-            <div class="mesa" formArrayName="numerosdemesas"
-                *ngFor="let mesa of numerosdemesasFormArray.controls; let i = index">
-                <input id="mesa{{i}}" type="checkbox" [formControlName]="i">
-                <label for="mesa{{i}}"> Mesa {{mesasSalon[i].numero}}</label>
-
-            </div>
-
-        </div>
-
-        <button id="reservar" (click)="onSubmit()">Enviar</button>
-    </div>
+    <button id="reservar" (click)="onSubmit()">Enviar</button>
 </form>
