@@ -45,15 +45,19 @@ export class MapComponent implements OnInit {
       setInterval( async () => {
       //* recupera la hora cada minuto
       Object.assign(this.fechaHoraActual, {
-        fecha: this.datePipe.transform(this.fechaHora,"yyyy-MM-dd")
+        // fecha: this.datePipe.transform(this.fechaHora,"yyyy-MM-dd")
+        fecha: '2020-11-30'
       });
       console.log(this.fechaHoraActual);
       Object.assign(this.fechaHoraActual, {
-        hora: this.datePipe.transform(this.fechaHora, "HH:mm:ss")
+        // hora: this.datePipe.transform(this.fechaHora, "HH:mm:ss")
+        hora: '21:00:00'
       });
+      console.log(this.fechaHoraActual);
       
       //* con la hora recuperada comprueba si hay mesas ocupadas
       this.mesasOcupadas = await this.reservasService.getMesasOcupadas(this.fechaHoraActual);
+      console.log(this.mesasOcupadas)
 
       //* compara el array de mesas con el array de ocupadas, para dar valor a la propiedad ocupada
       for(let mesa of this.mesasSalon){
@@ -67,7 +71,7 @@ export class MapComponent implements OnInit {
         }
       }
       console.log(this.mesasSalon);
-      }, 60000);
+      }, 10000);
       
        
     });
