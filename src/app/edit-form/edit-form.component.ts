@@ -70,7 +70,7 @@ export class EditFormComponent implements OnInit {
         this.editForm.value.idReserva = this.reservaId;
         this.reservasService.editReserva(this.editForm.value)
             .then(response => {
-                console.log(response);
+                console.log(this.editForm.value);
             })
             .catch(error => console.log(error));
     }

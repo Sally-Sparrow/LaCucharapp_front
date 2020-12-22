@@ -21,15 +21,14 @@ export class MapComponent implements OnInit {
   mesasOcupadas: Mesas[];
 
   fechaHoraActual: any;
-  
+
   minutosOcupacionMesa: number;
   ocupada: boolean;
 
-  constructor( private reservasService: ReservasService,
-               private activatedRoute: ActivatedRoute,
-               private datePipe: DatePipe
-             ) 
-  {
+  constructor(private reservasService: ReservasService,
+    private activatedRoute: ActivatedRoute,
+    private datePipe: DatePipe
+  ) {
     this.fechaHoraActual = {};
     this.minutosOcupacionMesa = 2;
   }
@@ -37,59 +36,59 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     //* pinta la fecha y la hora del día
-    setInterval( () => {
+    setInterval(() => {
       this.fechaHora = dayjs();
-    }, 1000 )
+    }, 1000)
 
     //? MESAS OCUPADAS
     //* recupera de bbdd las mesas en cada espacio
-    this.activatedRoute.params.subscribe( async params =>{
+    this.activatedRoute.params.subscribe(async params => {
       this.nombreSalon = params.salon;
-      this.mesasSalon = await this.reservasService.getMesasByEspacio( this.nombreSalon );
-        
+      this.mesasSalon = await this.reservasService.getMesasByEspacio(this.nombreSalon);
+
     });
 
-    setInterval( async () => {
+    setInterval(async () => {
       //* recupera la fecha cada minuto para hacer la peticion mesas ocupadas a bbdd
-      this.fechaHoraActual.fecha = this.datePipe.transform(this.fechaHora,"yyyy-MM-dd")
-        // fecha: '2020-11-30'
+      this.fechaHoraActual.fecha = this.datePipe.transform(this.fechaHora, "yyyy-MM-dd")
+      // fecha: '2020-11-30'
       console.log(this.fechaHoraActual);
       //* lo mismo pero con la hora
       this.fechaHoraActual.hora = this.datePipe.transform(this.fechaHora, "HH:mm:00")
-        // hora: '21:00:00'
+      // hora: '21:00:00'
       console.log(this.fechaHoraActual);
-      
+
       //* manda los datos y almacena en un array las mesas ocupadas
       this.mesasOcupadas = await this.reservasService.getMesasOcupadas(this.fechaHoraActual);
       console.log(this.mesasOcupadas)
 
       //* compara el array de mesas con el array de ocupadas, para dar valor a las propiedades horaInicio y horaFin
-      for(let mesa of this.mesasSalon){
-        for(let ocupada of this.mesasOcupadas){
-          if(mesa.numero === ocupada.numero){
-           mesa.ocupada = true;
-           mesa.horaInicio = this.fechaHora;
-           mesa.horaFin = this.fechaHora.add(this.minutosOcupacionMesa, 'minute');
-           break;
-          }else{
-           //mesa.ocupada = false; //mira a ver esto aqui
+      for (let mesa of this.mesasSalon) {
+        for (let ocupada of this.mesasOcupadas) {
+          if (mesa.numero === ocupada.numero) {
+            mesa.ocupada = true;
+            mesa.horaInicio = this.fechaHora;
+            mesa.horaFin = this.fechaHora.add(this.minutosOcupacionMesa, 'minute');
+            break;
+          } else {
+            //mesa.ocupada = false; //mira a ver esto aqui
           }
         }
       }
       console.log(this.mesasSalon);
 
       //* Comprueba el rango de horas de cada mesa con la hora actual para dar valor a la propiedad ocupada
-      for( let mesa of this.mesasSalon ){
-        if( this.fechaHora >= mesa.horaInicio && this.fechaHora <= mesa.horaFin){
+      for (let mesa of this.mesasSalon) {
+        if (this.fechaHora >= mesa.horaInicio && this.fechaHora <= mesa.horaFin) {
           mesa.ocupada = true;
           console.log('pone la mesa', mesa, 'true');
-        }else{ mesa.ocupada = false; }
+        } else { mesa.ocupada = false; }
       }
-      
 
-      }, 1000);
 
-    
+    }, 1000);
+
+
   }
 
 
