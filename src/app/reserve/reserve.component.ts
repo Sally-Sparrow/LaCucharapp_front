@@ -182,10 +182,6 @@ export class ReserveComponent implements OnInit {
 
     console.log(this.form.value);
 
-    this.reservasService.createReserva(this.form.value)
-      .then(response => { console.log(response) })
-      .catch(error => { console.log(error) })
-
     this.reservasService.createReserva( this.form.value )
     .then( response => { alert( JSON.stringify(response) )})
     .catch( error => console.log(error) );
