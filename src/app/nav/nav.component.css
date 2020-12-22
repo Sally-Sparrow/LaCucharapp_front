@@ -72,8 +72,8 @@
 }
 
 .menumap>button.activo-salon{
-  border-bottom: 4px solid var(--negro);
-  color: crimson;
+  border-bottom: 4px solid var(--gris);
+  color: var(--color-contraste);
 }
 
 
